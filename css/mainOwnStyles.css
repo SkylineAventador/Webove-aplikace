@@ -1,0 +1,64 @@
+.btn{
+    margin-bottom: 5px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.gBox{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+.gAnim{
+    position: relative;
+}
+
+.gAnim:after, .gAnim:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "";
+    z-index: -1;
+}
+
+.gAnim:after {
+    background: radial-gradient(circle, red, transparent);
+    background-size: 400%;
+    animation: animBG 30s linear infinite;
+}
+
+.gAnim:before{
+    background-color: yellow;
+}
+
+@keyframes animBG {
+    25%{background-position: 0 100%}
+    50%{background-position: 100% 100%}
+    75%{background-position: 100% 0}
+    100%{filter: hue-rotate(360deg)}
+}
+
+.contTransBg {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+div.userCard {
+    width: 200px;
+    display: inline-block;
+    margin: 10px;
+}
+
+div.usrBgSq{
+    background-color: rgba(255,255,255,0.75);
+}
+
+div.usersBg{
+    background-color: rgba(159,184,175,0.7);
+}
