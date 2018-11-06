@@ -22,17 +22,17 @@
                 <div class="form-group">
                     <label for="nameTF">Jméno a příjmení</label>
                     <input type="text" class="form-control" id="nameTF"
-                           placeholder="Jan Novák">
+                           placeholder="Jan Novák" name="regUsrJmeno">
                 </div>
                 <div class="form-group">
                     <label for="loginTF">Login</label>
-                    <input type="email" class="form-control" id="loginTF"
-                           placeholder="JNovak2018">
+                    <input type="text" class="form-control" id="loginTF"
+                           placeholder="JNovak2018" name="regUsrLogin">
                 </div>
                 <div class="form-group">
                     <label for="passwordTF">Heslo</label>
                     <input type="password" class="form-control" id="passwordTF"
-                    placeholder="Zadejte Vase heslo">
+                           placeholder="Zadejte Vase heslo" name="regUsrPassword">
                 </div>
                 <div class="form-group">
                     <label for="passwordCheckTF">Ověření hesla</label>
@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label for="emailTF">E-mail</label>
                     <input type="email" class="form-control" id="emailTF"
-                           placeholder="jannovak@seznam.cz">
+                           placeholder="jannovak@seznam.cz" name="regUsrEmail">
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="rememberCB">
