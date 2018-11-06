@@ -9,4 +9,5 @@ require_once 'core/model.class.php';
 require_once 'core/view.class.php';
 require_once 'core/controller.class.php';
 require_once 'core/route.class.php';
+require_once 'core/settings.inc.php';
 Route::start();

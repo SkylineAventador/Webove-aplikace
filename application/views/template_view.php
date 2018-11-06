@@ -10,7 +10,7 @@
 <html lang="cs">
 <head>
 	<meta charset="utf-8">
-	<title>Konference - Hlavní stránka</title>
+	<title>Konference</title>
 </head>
 <body>
 	<?php include 'application/views/'.$content_view; ?>

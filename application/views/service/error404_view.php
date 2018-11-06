@@ -15,13 +15,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../../../css/Bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../css/mainOwnStyles.css">
     <script src="../../../js/bootstrap.min.js"></script>
 </head>
 <body class="bg-dark">
-<div class="container_fluid" style="height: 100%">
-    <h1 class="text-center text-white-50">Error 404 - Page not found!</h1>
-    <a href="main" class="btn btn-primary">Main Page</a>
+<div class="container_fluid">
+    <h1 class="text-center text-white-50 mt-4">Error 404 - This page was not found.</h1>
+    <div class="container text-center">
+        <img class="text-center img-fluid" src="../../../images/Error.png" alt="Error">
+        <br>
+        <a href=".." class="btn btn-primary">Hlavní stránka</a>
+    </div>
 </div>
 </body>
 </html>

@@ -29,12 +29,11 @@ class Route
 
         // добавляем префиксы
         $controller_name = 'controller_'.$controller_name;
-        $model_name = 'model_'.$controller_name;
+        $model_name = 'model_'.$routes[1];
         $action_name = 'action_'.$action_name;
 
         // подцепляем файл с классом модели (файла модели может и не быть)
-
-        $model_file = strtolower($model_name).'.php';
+        $model_file = strtolower($model_name).'.class.php';
         $model_path = "application/models/".$model_file;
         if(file_exists($model_path))
         {

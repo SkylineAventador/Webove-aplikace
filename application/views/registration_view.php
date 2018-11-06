@@ -15,26 +15,44 @@
     <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body class="bg-dark">
-        <div class="container bg-white w-50 pb-2 rounded" style="margin-top: 25vh">
-            <h1 class="text-center text-dark">Test registration page!</h1>
+        <div class="container w-50 pb-2 rounded bg-light" style="margin-top: 8vh">
+            <h1 class="text-center text-dark">Registrace nového uživatele</h1>
 
-            <div class="form-group">
-                <label for="exampleInputEmail1">Adresa E-Mailové schránky</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                       placeholder="Zadejte sem svůj e-mail...">
-            </div>
-
-            <div class="container text-center">
-                <a href="main" class="btn btn-danger">Hlavni stranka</a>
-            </div>
+            <form action="registration/submit" method="post">
+                <div class="form-group">
+                    <label for="nameTF">Jméno a příjmení</label>
+                    <input type="text" class="form-control" id="nameTF"
+                           placeholder="Jan Novák">
+                </div>
+                <div class="form-group">
+                    <label for="loginTF">Login</label>
+                    <input type="email" class="form-control" id="loginTF"
+                           placeholder="JNovak2018">
+                </div>
+                <div class="form-group">
+                    <label for="passwordTF">Heslo</label>
+                    <input type="password" class="form-control" id="passwordTF"
+                    placeholder="Zadejte Vase heslo">
+                </div>
+                <div class="form-group">
+                    <label for="passwordCheckTF">Ověření hesla</label>
+                    <input type="password" class="form-control" id="passwordCheckTF"
+                    placeholder="Zopakujte Vase heslo jěště jednou">
+                </div>
+                <div class="form-group">
+                    <label for="emailTF">E-mail</label>
+                    <input type="email" class="form-control" id="emailTF"
+                           placeholder="jannovak@seznam.cz">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberCB">
+                    <label class="form-check-label" for="rememberCB">Pamatovat si mě</label>
+                </div>
+                <div class="container text-center">
+                    <button type="submit" class="btn btn-primary">Registrovat</button>
+                    <a href="main" class="btn btn-danger">Storno</a>
+                </div>
+            </form>
         </div>
-
-        <footer class="footer text-right fixed-bottom">
-            <div class="container">
-                <hr>
-                <span class="text-muted">Kravtsov Dmytro 2018 &reg;</span>
-            </div>
-        </footer>
-
 </body>
 </html>
