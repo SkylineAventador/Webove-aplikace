@@ -73,7 +73,7 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link btn btn-primary" href="#">Registrace</a>
+                <a class="nav-link btn btn-primary" href="registration">Registrace</a>
             </li>
         </ul>
     </nav>

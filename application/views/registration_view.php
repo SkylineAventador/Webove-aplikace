@@ -14,12 +14,27 @@
     <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
     <script src="../../js/bootstrap.min.js"></script>
 </head>
-<body>
-    <div class="container-fluid bg-dark text-center">
-        <div class="container bg-white">
+<body class="bg-dark">
+        <div class="container bg-white w-50 pb-2 rounded" style="margin-top: 25vh">
             <h1 class="text-center text-dark">Test registration page!</h1>
-            <a href="main" class="btn btn-danger">Hlavni stranka</a>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Adresa E-Mailové schránky</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="Zadejte sem svůj e-mail...">
+            </div>
+
+            <div class="container text-center">
+                <a href="main" class="btn btn-danger">Hlavni stranka</a>
+            </div>
         </div>
-    </div>
+
+        <footer class="footer text-right fixed-bottom">
+            <div class="container">
+                <hr>
+                <span class="text-muted">Kravtsov Dmytro 2018 &reg;</span>
+            </div>
+        </footer>
+
 </body>
 </html>
