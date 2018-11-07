@@ -13,12 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
     <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/regFieldsValidate.js"></script>
 </head>
 <body class="bg-dark">
         <div class="container w-50 pb-2 rounded bg-light" style="margin-top: 8vh">
             <h1 class="text-center text-dark">Registrace nového uživatele</h1>
 
-            <form action="registration/submit" method="post">
+            <form id="regForm" action="registration/submit" method="post">
                 <div class="form-group">
                     <label for="nameTF">Jméno a příjmení</label>
                     <input type="text" class="form-control" id="nameTF"
@@ -27,7 +28,8 @@
                 <div class="form-group">
                     <label for="loginTF">Login</label>
                     <input type="text" class="form-control" id="loginTF"
-                           placeholder="JNovak2018" name="regUsrLogin">
+                           placeholder="JNovak2018" name="regUsrLogin"
+                           onblur="validate()">
                 </div>
                 <div class="form-group">
                     <label for="passwordTF">Heslo</label>
@@ -37,11 +39,13 @@
                 <div class="form-group">
                     <label for="passwordCheckTF">Ověření hesla</label>
                     <input type="password" class="form-control" id="passwordCheckTF"
-                    placeholder="Zopakujte Vase heslo jěště jednou">
+                    placeholder="Zopakujte Vase heslo jěště jednou"
+                    aria-describedby="pswdCheckID">
+                    <output id="pswdCheckID" class="form-text text-muted">FUNKCE JE VE VYVOJI</output>
                 </div>
                 <div class="form-group">
                     <label for="emailTF">E-mail</label>
-                    <input type="email" class="form-control" id="emailTF"
+                    <input type="text" class="form-control" id="emailTF"
                            placeholder="jannovak@seznam.cz" name="regUsrEmail">
                 </div>
                 <div class="form-check">
@@ -49,7 +53,7 @@
                     <label class="form-check-label" for="rememberCB">Pamatovat si mě</label>
                 </div>
                 <div class="container text-center">
-                    <button type="submit" class="btn btn-primary">Registrovat</button>
+                    <button type="submit" id="btn-submit" class="btn btn-primary" disabled="disabled">Registrovat</button>
                     <a href="main" class="btn btn-danger">Storno</a>
                 </div>
             </form>

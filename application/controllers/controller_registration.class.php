@@ -20,7 +20,6 @@ class Controller_Registration extends Controller {
     function action_submit(){
         $this->model->submit_registration();
 
-        echo "Success: Connection and user registration was correct.";
     }
 
 }

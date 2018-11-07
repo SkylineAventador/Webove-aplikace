@@ -21,32 +21,34 @@
 </head>
 <body>
 
-<div class="gBox usersBg pb-1">
-    <div class="container border shadow-lg usrBgSq rounded">
+<div class="bg-dark" style="height: 100vh">
+    <div class="container col-10 border shadow-lg bg-white rounded">
         <?php
-            for ($i = 0; $i < 10; $i++) {
-                echo crUsrCard();
-            }
-
-            function crUsrCard(){
-               $returnString = "<div class=\"card userCard\">
-                   <img class=\"card-img-top\" src=\"../../images/unknown_user_img.png\" 
-                        alt=\"User image\">
-                   <div class=\"card-body\">
-                      <h4 class=\"card-title\">USER NAME</h4>
-                     <p class=\"card-text\">USER DESCRIPTION.</p>
-                     <a href=\"#\" class=\"btn btn-primary\" style=\"display: block\">Zobrazit profil</a>
-                  </div>
-               </div>";
-               return $returnString;
-            }
+            $dbh = new Model_Users();
+            $dbh->load_users();
+//            for ($i = 0; $i < 10; $i++) {
+//                echo crUsrCard();
+//            }
+//
+//            function crUsrCard(){
+//               $returnString = "<div class=\"card userCard\">
+//                   <img class=\"card-img-top\" src=\"../../images/unknown_user_img.png\"
+//                        alt=\"User image\">
+//                   <div class=\"card-body\">
+//                      <h4 class=\"card-title\">USER NAME</h4>
+//                     <p class=\"card-text\">USER DESCRIPTION.</p>
+//                     <a href=\"#\" class=\"btn btn-primary\" style=\"display: block\">Zobrazit profil</a>
+//                  </div>
+//               </div>";
+//               return $returnString;
+//            }
         ?>
         <div class="container text-center">
             <a href="main" class="btn btn-danger">Hlavni stranka</a>
         </div>
     </div>
     <footer>
-        <h2 class="mt-2 mr-2 text-right text-black-50">Kravtsov Dmytro</h2>
+        <h2 class="mt-2 mr-2 text-right text-white-50">Kravtsov Dmytro</h2>
     </footer>
 </div>
 </body>
