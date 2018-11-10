@@ -22,45 +22,29 @@ global $tplData;
 </head>
 <body>
 
-<div class="bg-dark" style="height: 100vmax">
-    <div class="container col-10 border shadow-lg bg-white rounded">
+<div class="bg-dark container-fluid">
+    <div class="container border shadow-lg bg-white rounded"
+            style="display: flex; flex-wrap: wrap; justify-content: space-between">
         <?php
         foreach ($tplData['data'] as $user) {
 
             ?>
 
-            <div class="card w-25 d-inline-block mr-0">
+            <div class="card" style="flex: 0 1 calc(25% - 1em)">
                 <img class="card-img-top" src="../../images/unknown_user_img.png"
                     alt="User image">
                 <div class="card-body">
-                    <h4 class="card-title"><?php echo "$user[jmeno]" ?></h4>
+                    <h4 class="card-title text-center"><?php echo "$user[jmeno]" ?></h4>
                     <p class="card-text"><?php echo "$user[email]" ?></p>
                     <a href="#" class="btn btn-primary" style="display: block">Zobrazit profil</a>
                 </div>
             </div>
 
-
             <?php
         }
-//            for ($i = 0; $i < 10; $i++) {
-//                echo crUsrCard();
-//            }
-//
-//            function crUsrCard(){
-//               $returnString = "<div class=\"card userCard\">
-//                   <img class=\"card-img-top\" src=\"../../images/unknown_user_img.png\"
-//                        alt=\"User image\">
-//                   <div class=\"card-body\">
-//                      <h4 class=\"card-title\">USER NAME</h4>
-//                     <p class=\"card-text\">USER DESCRIPTION.</p>
-//                     <a href=\"#\" class=\"btn btn-primary\" style=\"display: block\">Zobrazit profil</a>
-//                  </div>
-//               </div>";
-//               return $returnString;
-//            }
         ?>
-        <div class="container text-center">
-            <a href="main" class="btn btn-danger">Hlavni stranka</a>
+        <div class="container text-center mt-2">
+            <a href="../index2.php?page=main" class="btn btn-danger">Hlavni stranka</a>
         </div>
     </div>
     <footer>
