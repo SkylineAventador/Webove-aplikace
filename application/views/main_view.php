@@ -110,11 +110,11 @@ global $tplData;
                 foreach ($tplData['data'] as $article) {
                     ?>
                     <div class="card mb-3 bg-light text-dark">
-                        <div class="card-header">Zveřejněno: <?php $article['date'] ?>
-                            , uzivatelem <?php $article['author'] ?>.</div>
+                        <div class="card-header">Zveřejněno: <?php echo "$article[date]" ?>,
+                            uzivatelem <?php echo "$article[author]" ?>.</div>
                         <div class="card-body">
-                            <h4><?php $article['title'] ?></h4>
-                            <p><?php $article['text'] ?></p>
+                            <h4><?php echo "$article[title]" ?></h4>
+                            <p><?php echo "$article[text]" ?></p>
                         </div>
                     </div>
                 <?php
