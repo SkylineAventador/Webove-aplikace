@@ -5,6 +5,7 @@
  * Date: 28.10.2018
  * Time: 12:12
  */
+global $tplData;
 ?>
 <!DOCTYPE html>
 <html lang="cs">
@@ -21,11 +22,26 @@
 </head>
 <body>
 
-<div class="bg-dark" style="height: 100vh">
+<div class="bg-dark" style="height: 100vmax">
     <div class="container col-10 border shadow-lg bg-white rounded">
         <?php
-            $dbh = new Model_Users();
-            $dbh->load_users();
+        foreach ($tplData['data'] as $user) {
+
+            ?>
+
+            <div class="card w-25 d-inline-block mr-0">
+                <img class="card-img-top" src="../../images/unknown_user_img.png"
+                    alt="User image">
+                <div class="card-body">
+                    <h4 class="card-title"><?php echo "$user[jmeno]" ?></h4>
+                    <p class="card-text"><?php echo "$user[email]" ?></p>
+                    <a href="#" class="btn btn-primary" style="display: block">Zobrazit profil</a>
+                </div>
+            </div>
+
+
+            <?php
+        }
 //            for ($i = 0; $i < 10; $i++) {
 //                echo crUsrCard();
 //            }

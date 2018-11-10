@@ -89,7 +89,7 @@ global $tplData;
                                                                         margin-left: 3px">
         <h4>Navigace</h4>
         <a class="btn btn-block bg-secondary text-white"
-                href="users">Uživatele</a>
+                href="../index2.php?page=users">Uživatele</a>
         <button type="button" class="btn btn-block bg-primary text-white">Publikace</button>
         <button type="button" class="btn btn-block bg-warning text-black">Termíny</button>
         <button type="button" class="btn btn-block bg-secondary text-white">Témata</button>

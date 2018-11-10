@@ -26,5 +26,7 @@ const DEFAULT_PAGE = "main";
 // dostupne stranky
 const PAGES = array(
     "main" => array("file" => "controller_main.class.php", "object" => "Controller_Main",
-        "title" => "Hlavní stránka")
+        "title" => "Hlavní stránka"),
+    "users" => array("file" => "controller_users.class.php", "object" => "Controller_Users",
+        "title" => "Uživatele konference")
 );

@@ -11,7 +11,7 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
 // Loading server's settings
 require_once("application/core/settings.inc.php");
 
-// Test if required page exists.
+// TODO - test, zda je v pozadavku uvedena pozadovana stranka, jinak defaultni
 if(isset($_GET["page"])
     && array_key_exists([$_GET["page"], PAGES])){
 
@@ -19,16 +19,15 @@ if(isset($_GET["page"])
 
 } else {
 
-    $page = DEFAULT_PAGE;
+    //$page = DEFAULT_PAGE;
+    $page = "users";
 }
 
-// Connecting the neccessary controller
+// TODO - nacteni odpovidajiciho kontroleru, jeho zavolani a vypsani vysledku
+
 require(CONTROLLERS_DIRECTORY ."/". PAGES[$page]['file']);
 
-//Obtaining the controller's class name.
 $tmp = PAGES[$page]["object"];
-//Creating the instance.
 $con = new $tmp;
 
-//Calling the controller's page processing.
 echo $con->getResult();
