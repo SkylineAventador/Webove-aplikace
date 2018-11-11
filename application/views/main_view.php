@@ -6,6 +6,29 @@
  * Time: 23:46
  */
 global $tplData;
+require "application/controllers/controller_uLogin.class.php";
+$login = new Controller_uLogin();
+
+// zpracovani odeslanych formularu
+if(isset($_POST["potvrzeni"])){ // byl odeslan formular?
+    // pozadavek na login
+    if(isset($_POST["action"]) && $_POST["action"]=="login" && isset($_POST["jmeno"])         ){
+        // mam co ulozit?
+        if($_POST["jmeno"]!=""){
+            $login->login($_POST["jmeno"]);
+        } else {
+            echo "Přihlášení se nezdařilo: nebylo zadáno jméno uživatele.<br>";
+        }
+    } else if(isset($_POST["action"]) && $_POST["action"]=="logout"){
+        $login->logout();
+    } else {
+        echo "Pozor: byl odeslán formulář, ale nebyla provedena žádná akce.";
+    }
+}
+
+//TEST LOGINNING
+$login->login("Dmytro Kravtsov");
+//=======================================
 ?>
 <!DOCTYPE html>
 <html lang="cs">
@@ -26,56 +49,81 @@ global $tplData;
 <div class="container_fluid">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top justify-content-end">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <button class="nav-link btn btn-primary mr-2"
-                        onclick="document.getElementById('lfModal').style.display='block'">Prihlasit se</button>
-                <!-- lfModal = Login Form Modal-->
+            <?php
+                ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////
+                if(!$login->isUserLoged()) {
+                    ?>
+                    <li class="nav-item active">
+                        <button class="nav-link btn btn-primary mr-2"
+                                onclick="document.getElementById('lfModal').style.display='block'">Prihlasit se
+                        </button>
+                        <!-- lfModal = Login Form Modal-->
 
-                <div id="lfModal" class="modal">
-                    <form id="lfModal" class="modal-content animate" action="index.html">
-                        <div id="lfModal" class="imgcontainer">
+                        <div id="lfModal" class="modal">
+                            <form id="lfModal" class="modal-content animate col-md-6" action="index.html">
+                                <div id="lfModal" class="imgcontainer">
                             <span onclick="document.getElementById('lfModal').style.display='none'" class="close"
                                   title="Close Login Form">&times;</span>
-                            <img src="../../images/unknown_user_img.png" alt="Avatar" class="avatar">
+                                </div>
+                                <h4 class="text-dark text-center">Přihlášení uživatele</h4>
+
+                                <div id="lfModal" class="container">
+                                    <label for="uname"><b>Username</b></label>
+                                    <input id="lfModal" type="text" placeholder="Enter Username" name="uname" required>
+
+                                    <label for="psw"><b>Password</b></label>
+                                    <input id="lfModal" type="password" placeholder="Enter Password" name="psw"
+                                           required>
+
+                                    <button id="lfModal" type="button" class="btn btn-success">Login</button>
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
+                                </div>
+
+                                <div id="lfModal" class="container">
+                                    <button id="lfModal" type="button"
+                                            onclick="document.getElementById('lfModal').style.display='none'"
+                                            class="cancelbtn">Cancel
+                                    </button>
+                                    <span id="lfModal" class="psw">Forgot <a href="#">password?</a></span>
+                                </div>
+                            </form>
+
                         </div>
+                        <script>
+                            // Get the modal
+                            var modal = document.getElementById("lfModal");
 
-                        <div id="lfModal" class="container">
-                            <label for="uname"><b>Username</b></label>
-                            <input id="lfModal" type="text" placeholder="Enter Username" name="uname" required>
+                            // When the user clicks anywhere outside of the modal, close it
+                            window.onclick = function (event) {
+                                if (event.target == modal) {
+                                    modal.style.display = "none";
+                                }
+                            }
+                        </script>
+                    </li>
 
-                            <label for="psw"><b>Password</b></label>
-                            <input id="lfModal" type="password" placeholder="Enter Password" name="psw" required>
-
-                            <button id="lfModal" type="button" class="btn btn-success">Login</button>
-                            <label>
-                                <input type="checkbox" checked="checked" name="remember"> Remember me
-                            </label>
+                    <li class="nav-item active">
+                        <a class="nav-link btn btn-primary" href="../index2.php?page=registration">Registrace</a>
+                    </li>
+                    <?php
+                } else {
+                    ?>
+                    <li class="navbar-text mr-3">
+                        <div class="card">
+                            <div class="card-body text-dark">
+                                <?php echo $login->getUserInfo() ?>
+                            </div>
                         </div>
+                    </li>
 
-                        <div id="lfModal" class="container" style="background-color:#f1f1f1">
-                            <button id="lfModal" type="button" onclick="document.getElementById('lfModal').style.display='none'"
-                                    class="cancelbtn">Cancel</button>
-                            <span id="lfModal" class="psw">Forgot <a href="#">password?</a></span>
-                        </div>
-                    </form>
-
-                </div>
-                <script>
-                    // Get the modal
-                    var modal = document.getElementById("lfModal");
-
-                    // When the user clicks anywhere outside of the modal, close it
-                    window.onclick = function(event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
-                        }
-                    }
-                </script>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link btn btn-primary" href="registration">Registrace</a>
-            </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn btn-primary" href="#">Odhlásit se</a>
+                    </li>
+                    <?php
+                }
+            ?>
         </ul>
     </nav>
 

@@ -19,7 +19,7 @@
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
 }
 
 #lfModal button:hover {
@@ -38,7 +38,7 @@
     position: relative;
 }
 
-#lfModal img.avatar {
+img.avatar {
     width: 40%;
     border-radius: 50%;
 }

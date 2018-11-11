@@ -12,9 +12,10 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
 require_once("application/core/settings.inc.php");
 
 // Testing if required page exists. If NO -> switching to default page.
-if(isset($_GET['page']) || array_key_exists([$_GET['page'], PAGES])){
+$pageName = $_GET["page"];
+if(isset($_GET["page"]) && array_key_exists($pageName, PAGES)){
 
-    $page = $_GET['page'];
+    $page = $_GET["page"];
 
 } else {
 
