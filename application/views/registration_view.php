@@ -14,6 +14,9 @@ $con_reg = new Controller_Registration();
 //        echo "<p class='text-white'>Chyba ulozeni uzivatele</p>";
 //    }
 //}
+if (isset($_POST['submitBtn'])) {
+    $con_reg->submit_registration();
+}
 ?>
 <!DOCTYPE html>
 <html lang="cs">

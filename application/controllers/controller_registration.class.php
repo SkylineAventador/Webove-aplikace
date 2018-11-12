@@ -57,6 +57,7 @@ class Controller_Registration {
     }
 
     public function submit_registration(){
+        require_once "application/models/model_registration.class.php";
         $db = new Model_Registration();
         $db->submit_registration();
     }
