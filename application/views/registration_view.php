@@ -14,9 +14,10 @@ $con_reg = new Controller_Registration();
 //        echo "<p class='text-white'>Chyba ulozeni uzivatele</p>";
 //    }
 //}
-if (isset($_POST['submitBtn'])) {
-    $con_reg->submit_registration();
-}
+//if (isset($_POST['submitBtn'])) {
+//    $this->submit_registration();
+//    require_once "application/views/service/regComplete_view.php";
+//}
 ?>
 <!DOCTYPE html>
 <html lang="cs">
@@ -32,7 +33,7 @@ if (isset($_POST['submitBtn'])) {
         <div class="container w-50 pb-2 rounded bg-light" style="margin-top: 8vh">
             <h1 class="text-center text-dark">Registrace nového uživatele</h1>
 
-            <form id="regForm" action="../index2.php?page=registration" method="post">
+            <form id="regForm" action="" method="post">
                 <div class="form-group">
                     <label for="nameTF">Jméno a příjmení</label>
                     <input type="text" class="form-control" id="nameTF"
@@ -66,8 +67,10 @@ if (isset($_POST['submitBtn'])) {
                 </div>
                 <div class="container text-center">
                     <button type="submit" id="btn-submit" class="btn btn-primary"
-                            name="submitBtn">Registrovat</button>
-                    <a href="../index2.php?page=main" class="btn btn-danger">Storno</a>
+                            name="submitBtn" disabled>Registrovat</button>
+                    <a href="?page=main" class="btn btn-danger">Storno</a>
+                    <button type="reset" name="resetBtn"
+                            class="btn btn-outline-warning float-right">Vymazat data</button>
                 </div>
             </form>
         </div>

@@ -62,4 +62,17 @@ class Controller_Registration {
         $db->submit_registration();
     }
 
+    //Konzervovano
+
+//    public function areFieldsSetted(){
+//        $fields = array($_POST['regUsrJmeno'], $_POST['regUsrLogin'], $_POST['regUsrPassword'],
+//            $_POST['regUsrEmail']);
+//        foreach ($fields as $key => $field) {
+//            if (!empty($field)) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
 }
