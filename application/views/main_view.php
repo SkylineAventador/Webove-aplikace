@@ -10,24 +10,24 @@ require "application/controllers/controller_uLogin.class.php";
 $login = new Controller_uLogin();
 
 // zpracovani odeslanych formularu
-if(isset($_POST["potvrzeni"])){ // byl odeslan formular?
-    // pozadavek na login
-    if(isset($_POST["action"]) && $_POST["action"]=="login" && isset($_POST["jmeno"])         ){
-        // mam co ulozit?
-        if($_POST["jmeno"]!=""){
-            $login->login($_POST["jmeno"]);
-        } else {
-            echo "Přihlášení se nezdařilo: nebylo zadáno jméno uživatele.<br>";
-        }
-    } else if(isset($_POST["action"]) && $_POST["action"]=="logout"){
-        $login->logout();
-    } else {
-        echo "Pozor: byl odeslán formulář, ale nebyla provedena žádná akce.";
-    }
-}
+//if(isset($_POST["potvrzeni"])){ // byl odeslan formular?
+//    // pozadavek na login
+//    if(isset($_POST["action"]) && $_POST["action"]=="login" && isset($_POST["jmeno"])         ){
+//        // mam co ulozit?
+//        if($_POST["jmeno"]!=""){
+//            $login->login($_POST["jmeno"]);
+//        } else {
+//            echo "Přihlášení se nezdařilo: nebylo zadáno jméno uživatele.<br>";
+//        }
+//    } else if(isset($_POST["action"]) && $_POST["action"]=="logout"){
+//        $login->logout();
+//    } else {
+//        echo "Pozor: byl odeslán formulář, ale nebyla provedena žádná akce.";
+//    }
+//}
 
 //TEST LOGINNING
-$login->login("Dmytro Kravtsov");
+//$login->login("Dmytro Kravtsov");
 //=======================================
 ?>
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ $login->login("Dmytro Kravtsov");
 <body>
 
 <div class="container_fluid">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top justify-content-end">
+    <nav class="navbar navbar-dark bg-dark navbar-expand fixed-top justify-content-end">
         <ul class="navbar-nav">
             <?php
                 ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////
@@ -111,15 +111,13 @@ $login->login("Dmytro Kravtsov");
                 } else {
                     ?>
                     <li class="navbar-text mr-3">
-                        <div class="card">
-                            <div class="card-body text-dark">
-                                <?php echo $login->getUserInfo() ?>
-                            </div>
+                        <div class="container">
+                            <?php echo $login->getUserInfo()?>
                         </div>
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link btn btn-primary" href="#">Odhlásit se</a>
+                        <a class="nav-link btn btn-primary mt-2" href="#">Odhlásit se</a>
                     </li>
                     <?php
                 }
@@ -127,7 +125,7 @@ $login->login("Dmytro Kravtsov");
         </ul>
     </nav>
 
-    <div class="page-header text-center contTransBg border" style="margin-top: 50px; margin-bottom: 15px; padding: 15px">
+    <div class="page-header text-center border mb-3">
         <h1>Web konference</h1>
         <h2>Vzor semestralni prace z predmetu KIV/WEB</h2>
     </div>

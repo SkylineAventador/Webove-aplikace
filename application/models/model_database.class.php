@@ -20,6 +20,14 @@ class Model_Database {
     }
 
     /**
+     * @return PDO
+     */
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
+
+    /**
      *  Vrati seznam popularnich clanku pro uvodni stranku.
      *  @return array Obsah uvodu.
      */
