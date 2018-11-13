@@ -9,25 +9,12 @@ global $tplData;
 require "application/controllers/controller_uLogin.class.php";
 $login = new Controller_uLogin();
 
-// zpracovani odeslanych formularu
-//if(isset($_POST["potvrzeni"])){ // byl odeslan formular?
-//    // pozadavek na login
-//    if(isset($_POST["action"]) && $_POST["action"]=="login" && isset($_POST["jmeno"])         ){
-//        // mam co ulozit?
-//        if($_POST["jmeno"]!=""){
-//            $login->login($_POST["jmeno"]);
-//        } else {
-//            echo "Přihlášení se nezdařilo: nebylo zadáno jméno uživatele.<br>";
-//        }
-//    } else if(isset($_POST["action"]) && $_POST["action"]=="logout"){
-//        $login->logout();
-//    } else {
-//        echo "Pozor: byl odeslán formulář, ale nebyla provedena žádná akce.";
-//    }
-//}
+
+
 
 //TEST LOGINNING
 //$login->login("Dmytro Kravtsov");
+//$login->logout();
 //=======================================
 ?>
 <!DOCTYPE html>
@@ -60,7 +47,8 @@ $login = new Controller_uLogin();
                         <!-- lfModal = Login Form Modal-->
 
                         <div id="lfModal" class="modal">
-                            <form id="lfModal" class="modal-content animate col-md-6" action="index.html">
+                            <form id="lfModal" class="modal-content animate col-md-6"
+                                  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                 <div id="lfModal" class="imgcontainer">
                             <span onclick="document.getElementById('lfModal').style.display='none'" class="close"
                                   title="Close Login Form">&times;</span>
@@ -75,7 +63,7 @@ $login = new Controller_uLogin();
                                     <input id="lfModal" type="password" placeholder="Enter Password" name="psw"
                                            required>
 
-                                    <button id="lfModal" type="button" class="btn btn-success">Login</button>
+                                    <button id="lfModal" type="submit" class="btn btn-success">Login</button>
                                     <label>
                                         <input type="checkbox" checked="checked" name="remember"> Remember me
                                     </label>
@@ -84,8 +72,7 @@ $login = new Controller_uLogin();
                                 <div id="lfModal" class="container">
                                     <button id="lfModal" type="button"
                                             onclick="document.getElementById('lfModal').style.display='none'"
-                                            class="cancelbtn">Cancel
-                                    </button>
+                                            class="cancelbtn">Cancel</button>
                                     <span id="lfModal" class="psw">Forgot <a href="#">password?</a></span>
                                 </div>
                             </form>
