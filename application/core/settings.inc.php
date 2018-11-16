@@ -30,8 +30,11 @@ const DEFAULT_PAGE = "main";
 
 // dostupne stranky
 const PAGES = array(
-    "main" => array("file" => "controller_main.class.php", "object" => "Controller_Main"),
-    "users" => array("file" => "controller_users.class.php", "object" => "Controller_Users"),
+    "main" => array("file" => "controller_main.class.php", "object" => "Controller_Main",
+        "title" => "Hlavní stránka"),
+    "users" => array("file" => "controller_users.class.php", "object" => "Controller_Users",
+        "title" => "Uživatele"),
     "registration" => array("file" => "controller_registration.class.php",
-        "object" => "Controller_Registration")
+        "object" => "Controller_Registration",
+        "title" => "Registrace uživatele")
 );

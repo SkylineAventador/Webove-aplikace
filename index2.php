@@ -8,7 +8,6 @@
 // vynuceni chybovych vypisu na students.kiv.zcu.cz
 ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
 
-$template_data = array();
 // Loading server's settings
 require_once("application/core/settings.inc.php");
 
@@ -31,7 +30,7 @@ $tmp = PAGES[$page]["object"];
 //Creating a controller instance.
 $con = new $tmp;
 
-//Creating a matching twig template.
+//Obtaining a matching twig template name.
 $p_tpl_name = "$page.tpl.twig";
 
 //===================================
@@ -43,7 +42,16 @@ Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem(TEMPLATES_DIRECTORY);
 $twig = new Twig_Environment($loader);
 
-//Printing a processed output.
+global $tplData;
+$tplData['title'] = PAGES[$page]['title'];
+
+//Connecting and printing header template.
+$header_template = $twig->loadTemplate("header.tpl.twig");
+echo $header_template->render($tplData);
+
+//Printing a processed page template output.
 echo $con->getResult($twig, $p_tpl_name); //TWIG
 
-//echo $con->getResult(); //regular PHP controller
+//Connecting and printing footer template.
+$footer_template = $twig->loadTemplate("footer.tpl.twig");
+echo $footer_template->render($tplData);
