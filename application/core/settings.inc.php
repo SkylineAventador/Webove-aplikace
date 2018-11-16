@@ -21,15 +21,17 @@ define("TAB_ARTICLES", "prispevky"); //pro LOCALHOST
 //// Dostupne stranky webu a jejich prechody
 // adresar kontroleru
 const CONTROLLERS_DIRECTORY = "application/controllers";
+
+//adresar sablon TWIGU
+const TEMPLATES_DIRECTORY = "application/templates";
+
 // defaultni webu
 const DEFAULT_PAGE = "main";
+
 // dostupne stranky
 const PAGES = array(
-    "main" => array("file" => "controller_main.class.php", "object" => "Controller_Main",
-        "title" => "Hlavní stránka"),
-    "users" => array("file" => "controller_users.class.php", "object" => "Controller_Users",
-        "title" => "Uživatele konference"),
+    "main" => array("file" => "controller_main.class.php", "object" => "Controller_Main"),
+    "users" => array("file" => "controller_users.class.php", "object" => "Controller_Users"),
     "registration" => array("file" => "controller_registration.class.php",
-        "object" => "Controller_Registration",
-        "title" => "Registrace uživatele")
+        "object" => "Controller_Registration")
 );

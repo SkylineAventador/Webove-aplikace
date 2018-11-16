@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <title>{{ title | striptags }}</title>
+    <meta charset="utf-8">
+    <!-- Proper bootstrap elements scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/mainOwnStyles.css">
+    <link rel="stylesheet" href="../../css/lfModalStyle.css"/>
+
+    <script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container_fluid">
+    <div id="articles" class="container shadow p-3 mb-4 text-justify contTransBg border">
+        <h2 class="text-dark text-center">Aktuální články</h2>
+        {% if data is not empty %}
+            {% for id in data %}
+                <div class="card mb-3 bg-light text-dark">
+                    <div class="card-header">
+                        Zveřejněno: <b>{{ id.date }}</b>, uzivatelem <b>{{ id.author }}</b>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{ id.title }}</h4>
+                        <p>{{ id.text }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% else %}
+                <h2 class="text-dark text-center">No articles have been found!</h2>
+        {% endif %}
+
+    </div>
+</div>
+
+</body>
+</html>
