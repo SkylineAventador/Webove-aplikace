@@ -29,7 +29,7 @@ class Controller_Main {
      *  Vrati obsah stranky
      * @return string Obsah stranky
      */
-    public function getResult(Twig_Environment $twig, $p_tpl_name)
+    public function getResult(Twig_Environment $twig, $p_tpl_name, $tplData)
     {
         $tplData['data'] = $this->db->getMPArticles();
 

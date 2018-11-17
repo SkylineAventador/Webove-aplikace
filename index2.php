@@ -67,7 +67,7 @@ $header_template = $twig->loadTemplate("header.tpl.twig");
 echo $header_template->render($tplData);
 
 //Printing a processed page template output.
-echo $con->getResult($twig, $p_tpl_name); //TWIG
+echo $con->getResult($twig, $p_tpl_name, $tplData); //TWIG
 
 //Connecting and printing footer template.
 $footer_template = $twig->loadTemplate("footer.tpl.twig");
