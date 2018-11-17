@@ -42,10 +42,14 @@ Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem(TEMPLATES_DIRECTORY);
 $twig = new Twig_Environment($loader);
 
+//Creating global array type variable.
+//All references at page controllers will use this variable declared at index.php.
 global $tplData;
+//Obtaining page title.
 $tplData['title'] = PAGES[$page]['title'];
-
+$tplData['currentPage'] = $page;
 //Connecting and printing header template.
+//Page title obtained above will be used here as <title> at <head>
 $header_template = $twig->loadTemplate("header.tpl.twig");
 echo $header_template->render($tplData);
 

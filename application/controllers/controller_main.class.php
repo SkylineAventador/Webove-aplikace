@@ -31,10 +31,6 @@ class Controller_Main {
      */
     public function getResult(Twig_Environment $twig, $p_tpl_name)
     {
-        // TODO - nastaveni globalnich promennych pro sablonu
-        global $tplData;
-        // TODO - naplneni globalnich promennych
-        $tplData['title'] = "Hlavní stránka konference";
         $tplData['data'] = $this->db->getMPArticles();
 
         $page_template = $twig->loadTemplate($p_tpl_name);

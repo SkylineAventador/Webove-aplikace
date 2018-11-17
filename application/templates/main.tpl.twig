@@ -1,5 +1,5 @@
 <div class="container_fluid">
-    <div id="articles" class="container shadow p-3 mb-4 text-justify contTransBg border">
+    <div class="container shadow p-3 mb-4 text-justify contTransBg border">
         <h2 class="text-dark text-center">Aktuální články</h2>
         {% if data is not empty %}
             {% for id in data %}
@@ -19,7 +19,13 @@
             {% endfor %}
 
             {% else %}
-                <h2 class="text-dark text-center">No articles have been found!</h2>
+                <div class="card text-center text-dark">
+                    <div class="card-body bg-light shadow border border-danger">
+                        <h1>Chyba</h1>
+                        <br>
+                        <h2>Nebyly nalézeny žádné články</h2>
+                    </div>
+                </div>
         {% endif %}
 
     </div>

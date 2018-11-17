@@ -23,14 +23,14 @@ global $tplData;
 <body>
 
 <div class="bg-dark container-fluid">
-    <div class="container border shadow-lg bg-white rounded"
+    <div class="container border shadow-lg bg-white rounded pt-3"
             style="display: flex; flex-wrap: wrap; justify-content: space-between">
         <?php
         foreach ($tplData['data'] as $user) {
 
             ?>
 
-            <div class="card" style="flex: 0 1 calc(25% - 1em)">
+            <div class="card m-2" style="flex: 0 1 calc(25% - 1em)">
                 <img class="card-img-top" src="../../images/unknown_user_img.png"
                     alt="User image">
                 <div class="card-body">
