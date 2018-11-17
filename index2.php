@@ -30,6 +30,9 @@ $tmp = PAGES[$page]["object"];
 //Creating a controller instance.
 $con = new $tmp;
 
+require (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
+$con_usrLogin = new Controller_uLogin();
+
 //Obtaining a matching twig template name.
 $p_tpl_name = "$page.tpl.twig";
 
@@ -48,6 +51,16 @@ global $tplData;
 //Obtaining page title.
 $tplData['title'] = PAGES[$page]['title'];
 $tplData['currentPage'] = $page;
+
+
+//TEST
+//$con_usrLogin->logout();
+$con_usrLogin->login("Dmytro Kravtsov");
+$tplData['user_name'] = $con_usrLogin->getDName();
+//======
+if ($con_usrLogin->isUserLoged()){
+    $tplData['user_LogData'] = $con_usrLogin->getUserInfo();
+}
 //Connecting and printing header template.
 //Page title obtained above will be used here as <title> at <head>
 $header_template = $twig->loadTemplate("header.tpl.twig");

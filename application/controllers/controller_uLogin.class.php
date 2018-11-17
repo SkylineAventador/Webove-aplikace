@@ -33,7 +33,7 @@ class Controller_uLogin{
      */
     public function login($userName){
         $this->ses->addSession($this->dName,$userName); // jmeno
-        $this->ses->addSession($this->dDate,date("d. m. Y, G:m"));
+        $this->ses->addSession($this->dDate,date("d. m. Y, H:i"));
     }
 
     /**
@@ -51,6 +51,15 @@ class Controller_uLogin{
     public function getUserInfo(){
         $name = $this->ses->readSession($this->dName);
         $date = $this->ses->readSession($this->dDate);
-        return "Uživatel: $name<br>Přihlášen: $date<br>";
+        return "Uživatel: $name <br>Přihlášení: $date";
+    }
+
+    /**
+     * @return string
+     */
+    public function getDName()
+    {
+        $name = $this->ses->readSession($this->dName);
+        return $name;
     }
 }

@@ -34,16 +34,30 @@
                 <a href="?page=info" class="btn btn-outline-warning">Informace</a>
             </li>
 
-
-            <li class="nav-item ml-auto mr-2">
-                <button type="button" class="btn btn-outline-info"
-                        onclick="document.getElementById('lfModal').style.display='block'">Prihlasit se
-                </button>
-            </li>
-            {% if currentPage != "registration" %}
-                <li class="nav-item">
-                    <a href="?page=registration" class="btn btn-outline-info">Registrace</a>
+            {% if user_LogData is not defined %}
+                <li class="nav-item ml-auto mr-2">
+                    <button type="button" class="btn btn-outline-info"
+                            onclick="document.getElementById('lfModal').style.display='block'">Prihlasit se
+                    </button>
                 </li>
+
+                {% if currentPage != "registration" %}
+                    <li class="nav-item">
+                        <a href="?page=registration" class="btn btn-outline-info">Registrace</a>
+                    </li>
+                {% endif %}
+
+                {% else %}
+                    <li id="uTopInfoCard"
+                        class="container bg-success text-white rounded mr-2 pt-1 w-auto">
+                        {{ user_name }}
+                        <div id="uTopInfoCard-dropdown" class="rounded text-dark p-2">
+                            {{ user_LogData | raw }}
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-danger">Odhlásit</button>
+                    </li>
             {% endif %}
         </ul>
     </div>
