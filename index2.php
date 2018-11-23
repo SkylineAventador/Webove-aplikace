@@ -55,11 +55,17 @@ $tplData['currentPage'] = $page;
 
 //TEST
 //$con_usrLogin->logout();
-$con_usrLogin->login("Dmytro Kravtsov");
-$tplData['user_name'] = $con_usrLogin->getDName();
+//$con_usrLogin->login("Dmytro Kravtsov");
+
+//Prihlaseni -> je odeslan formular prihlaseni?
+if (isset($_POST["sbmt_lg_btn"])){
+    $con_usrLogin->identifyUserDB($tplData);
+    unset($_POST["sbmt_lg_btn"]);
+}
 //======
 if ($con_usrLogin->isUserLoged()){
     $tplData['user_LogData'] = $con_usrLogin->getUserInfo();
+    $tplData['user_name'] = $con_usrLogin->getDName();
 }
 //Connecting and printing header template.
 //Page title obtained above will be used here as <title> at <head>

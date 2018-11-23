@@ -18,28 +18,45 @@
     <div id="navbar"
          class="navbar navbar-dark navbar-expand bg-dark fixed-top w-100 d-block">
         <ul class="navbar-nav">
-            <li class="nav-item mr-2">
-                <a href="?page=users" class="btn btn-outline-warning">Uživatele</a>
-            </li>
-            <li class="nav-item mr-2">
-                <a href="?page=terms" class="btn btn-outline-warning">Termíny</a>
-            </li>
-            <li class="nav-item mr-2">
-                <a href="?page=themes" class="btn btn-outline-warning">Témata</a>
-            </li>
-            <li class="nav-item mr-2">
-                <a href="?page=articles" class="btn btn-outline-warning">Články</a>
-            </li>
-            <li class="nav-item mr-2">
-                <a href="?page=info" class="btn btn-outline-warning">Informace</a>
-            </li>
-
             {% if user_LogData is not defined %}
                 <li class="nav-item ml-auto mr-2">
                     <button type="button" class="btn btn-outline-info"
                             onclick="document.getElementById('lfModal').style.display='block'">Prihlasit se
                     </button>
                 </li>
+
+                {#==============================Formular prihlaseni ZACATEK======================================#}
+                <div id="lfModal" class="modal">
+                    <form id="lfModal" class="modal-content animate col-md-6" method="post">
+                    <div id="lfModal" class="imgcontainer">
+                            <span onclick="document.getElementById('lfModal').style.display='none'" class="close"
+                                  title="Close Login Form">&times;</span>
+                    </div>
+                    <h4 class="text-dark text-center">Přihlášení uživatele</h4>
+
+                    <div id="lfModal" class="container">
+                        <label for="uname"><b>Username</b></label>
+                        <input id="lfModal" type="text" placeholder="Enter Username" name="lfModal_uname" required>
+
+                        <label for="psw"><b>Password</b></label>
+                        <input id="lfModal" type="password" placeholder="Enter Password" name="lfModal_psw"
+                               required>
+
+                        <button id="lfModal" name="sbmt_lg_btn" type="submit" class="btn btn-success">Login</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+                    </div>
+
+                    <div id="lfModal" class="container">
+                        <button id="lfModal" type="button"
+                                onclick="document.getElementById('lfModal').style.display='none'"
+                                class="cancelbtn">Cancel</button>
+                        <span id="lfModal" class="psw">Forgot <a href="#">password?</a></span>
+                    </div>
+                    </form>
+                </div>
+                {#=========================Formular prihlaseni KONEC=====================================#}
 
                 {% if currentPage != "registration" %}
                     <li class="nav-item">
@@ -48,6 +65,22 @@
                 {% endif %}
 
                 {% else %}
+                    <li class="nav-item mr-2">
+                        <a href="?page=users" class="btn btn-outline-warning">Uživatele</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="?page=terms" class="btn btn-outline-warning">Termíny</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="?page=themes" class="btn btn-outline-warning">Témata</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="?page=articles" class="btn btn-outline-warning">Články</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="?page=info" class="btn btn-outline-warning">Informace</a>
+                    </li>
+
                     <li id="uTopInfoCard"
                         class="container bg-success text-white rounded mr-2 pt-1 w-auto">
                         {{ user_name }}
@@ -56,21 +89,9 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-danger">Odhlásit</button>
+                        <button type="button" name="logOut_nvBar_btn" class="btn btn-outline-danger">Odhlásit</button>
                     </li>
             {% endif %}
         </ul>
     </div>
 </div>
-    <script>
-        var prevScrollpos = window.pageYOffset;
-        window.onscroll = function() {
-            var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos) {
-                document.getElementById("navbar").style.top = "0";
-            } else {
-                document.getElementById("navbar").style.top = "-55px";
-            }
-            prevScrollpos = currentScrollPos;
-        }
-    </script>
