@@ -14,10 +14,16 @@
 </head>
 <body>
 
-<div class="container_fluid">
+<div class="container_fluid" style="margin-bottom: 55px">
     <div id="navbar"
          class="navbar navbar-dark navbar-expand bg-dark fixed-top w-100 d-block">
         <ul class="navbar-nav">
+            <li class="navbar-brand">
+                <a href="index2.php?page=main" class="text-white">Konference</a>
+            </li>
+            <li class="nav-item mr-2">
+                <a href="?page=articles" class="btn btn-outline-warning">Publikace</a>
+            </li>
             {% if user_LogData is not defined %}
                 <li class="nav-item ml-auto mr-2">
                     <button type="button" class="btn btn-outline-info"
@@ -35,24 +41,24 @@
                     <h4 class="text-dark text-center">Přihlášení uživatele</h4>
 
                     <div id="lfModal" class="container">
-                        <label for="uname"><b>Username</b></label>
+                        <label for="uname"><b>Login:</b></label>
                         <input id="lfModal" type="text" placeholder="Enter Username" name="lfModal_uname" required>
 
-                        <label for="psw"><b>Password</b></label>
+                        <label for="psw"><b>Heslo:</b></label>
                         <input id="lfModal" type="password" placeholder="Enter Password" name="lfModal_psw"
                                required>
 
-                        <button id="lfModal" name="sbmt_lg_btn" type="submit" class="btn btn-success">Login</button>
+                        <button id="lfModal" name="sbmt_lg_btn" type="submit" class="btn btn-success w-100">Pokračovat</button>
                         <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                            <input type="checkbox" checked="checked" name="remember"> Pamatovat si mě
                         </label>
                     </div>
 
                     <div id="lfModal" class="container">
                         <button id="lfModal" type="button"
                                 onclick="document.getElementById('lfModal').style.display='none'"
-                                class="cancelbtn">Cancel</button>
-                        <span id="lfModal" class="psw">Forgot <a href="#">password?</a></span>
+                                class="cancelbtn">Storno</button>
+                        <span id="lfModal" class="psw">Zapoměl(a) jste <a href="#">heslo</a>?</span>
                     </div>
                     </form>
                 </div>
@@ -89,7 +95,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <button type="button" name="logOut_nvBar_btn" class="btn btn-outline-danger">Odhlásit</button>
+                        <a href="index2.php?page=logout" class="btn btn-outline-danger">Odhlásit</a>
                     </li>
             {% endif %}
         </ul>

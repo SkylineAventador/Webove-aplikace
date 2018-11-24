@@ -28,6 +28,8 @@ const TEMPLATES_DIRECTORY = "application/templates";
 // defaultni webu
 const DEFAULT_PAGE = "main";
 
+const NOT_FOUND_PAGE = "error_404";
+
 // dostupne stranky
 const PAGES = array(
     "main" => array("file" => "controller_main.class.php", "object" => "Controller_Main",
@@ -36,5 +38,7 @@ const PAGES = array(
         "title" => "Uživateli"),
     "registration" => array("file" => "controller_registration.class.php",
         "object" => "Controller_Registration",
-        "title" => "Registrace uživatele")
+        "title" => "Registrace uživatele"),
+    "error_404" => array("file" => "controller_error_404.class.php", "object" => "Controller_Error_404",
+        "title" => "Error 404 - Stránka není nalezená")
 );

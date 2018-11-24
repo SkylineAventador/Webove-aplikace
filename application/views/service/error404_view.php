@@ -23,7 +23,7 @@
     <div class="container text-center">
         <img class="text-center img-fluid" src="../../../images/Error.png" alt="Error">
         <br>
-        <a href=".." class="btn btn-primary">Hlavní stránka</a>
+        <a href="index2.php?page=main" class="btn btn-primary">Hlavní stránka</a>
     </div>
 </div>
 </body>

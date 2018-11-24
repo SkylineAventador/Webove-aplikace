@@ -68,10 +68,6 @@ class Controller_uLogin{
         $model_con = new Model_uLogin();
         $tplData["user_db_info"] = $model_con->user_identify_DB($_POST["lfModal_uname"],
             $_POST["lfModal_psw"]);
-//        foreach ($tplData["user_db_info"] as $userInfo){
-//            $this->login($userInfo['jmeno']);
-//        }
-        //echo var_dump($tplData["user_db_info"]);
         $this->login($tplData["user_db_info"][0]['jmeno']);
     }
 }

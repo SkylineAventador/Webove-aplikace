@@ -11,6 +11,13 @@ ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_report
 // Loading server's settings
 require_once("application/core/settings.inc.php");
 
+//Creating global array type variable.
+//All references at page controllers will use this variable declared at index.php.
+global $tplData;
+
+require (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
+$con_usrLogin = new Controller_uLogin();
+
 // Testing if required page exists. If NO -> switching to default page.
 $pageName = $_GET["page"];
 if(isset($_GET["page"]) && array_key_exists($pageName, PAGES)){
@@ -18,8 +25,13 @@ if(isset($_GET["page"]) && array_key_exists($pageName, PAGES)){
     $page = $_GET["page"];
 
 } else {
-
-    $page = DEFAULT_PAGE;
+    if ($pageName == "logout") {
+        $con_usrLogin->logout();
+        header("Location: ?page=main");
+        die();
+    } else
+        header("Location: ?page=error_404");
+        die();
 }
 
 // Connecting a necessary controller.
@@ -29,9 +41,6 @@ require(CONTROLLERS_DIRECTORY ."/". PAGES[$page]['file']);
 $tmp = PAGES[$page]["object"];
 //Creating a controller instance.
 $con = new $tmp;
-
-require (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
-$con_usrLogin = new Controller_uLogin();
 
 //Obtaining a matching twig template name.
 $p_tpl_name = "$page.tpl.twig";
@@ -45,9 +54,6 @@ Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem(TEMPLATES_DIRECTORY);
 $twig = new Twig_Environment($loader);
 
-//Creating global array type variable.
-//All references at page controllers will use this variable declared at index.php.
-global $tplData;
 //Obtaining page title.
 $tplData['title'] = PAGES[$page]['title'];
 $tplData['currentPage'] = $page;
