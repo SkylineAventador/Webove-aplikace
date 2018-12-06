@@ -61,7 +61,7 @@ $tplData['currentPage'] = $page;
 
 //Prihlaseni -> je odeslan formular prihlaseni?
 if (isset($_POST["sbmt_lg_btn"])){
-    $con_usrLogin->identifyUserDB($tplData);
+    $con_usrLogin->identifyUserDB();
     unset($_POST["sbmt_lg_btn"]);
 }
 //======
@@ -80,3 +80,5 @@ echo $con->getResult($twig, $p_tpl_name, $tplData); //TWIG
 //Connecting and printing footer template.
 $footer_template = $twig->loadTemplate("footer.tpl.twig");
 echo $footer_template->render($tplData);
+
+//var_dump($tplData["user_db_info"]);

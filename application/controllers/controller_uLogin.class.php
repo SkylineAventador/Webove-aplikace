@@ -63,9 +63,10 @@ class Controller_uLogin{
         return $name;
     }
 
-    public function identifyUserDB($tplData){
+    public function identifyUserDB(){
         include_once ("application/models/model_uLogin.class.php");
         $model_con = new Model_uLogin();
+        global $tplData;
         $tplData["user_db_info"] = $model_con->user_identify_DB($_POST["lfModal_uname"],
             $_POST["lfModal_psw"]);
         $this->login($tplData["user_db_info"][0]['jmeno']);

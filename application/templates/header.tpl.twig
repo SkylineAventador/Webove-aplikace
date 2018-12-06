@@ -89,15 +89,19 @@
                     </li>
 
                         {#BIG ERROR, FIX IT!!!!#}
-                        {#{% if user_db_info[0]["idprava"] == 0 %} #}{# Je-li autorem#}
-                            {#<li class="nav-item">#}
-                                {#<a href="?page=activity" class="btn btn-outline-primary">Moje prispěvky</a>#}
-                            {#</li>#}
-                            {#{% elseif user_db_info[0]["idprava"] == 3 %} #}{# Je-li rezenzent #}
-                                {#<li class="nav-item">#}
-                                    {#<a href="?page=activity" class="btn btn-outline-primary">Moje rezenze</a>#}
-                                {#</li>#}
-                        {#{% endif %}#}
+                        {% if user_db_info[0]["idprava"] == 0 %}
+                            <li class="nav-item">
+                                <a href="?page=activity" class="btn btn-outline-primary">Moje Prispěvky</a>
+                            </li>
+                            {% elseif user_db_info[0]["idprava"] == 3 %}
+                                <li class="nav-item">
+                                    <a href="?page=activity" class="btn btn-outline-primary">Moje Rezenze</a>
+                                </li>
+                            {% elseif user_db_info[0]["idprava"] == 2 %}
+                                <li class="nav-item">
+                                    <a href="?page=activity" class="btn btn-outline-primary">Správování</a>
+                                </li>
+                        {% endif %}
 
                     <li id="uTopInfoCard"
                         class="container bg-success text-white rounded mr-2 pt-1 w-auto">
@@ -107,7 +111,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="index2.php?page=logout" class="btn btn-outline-danger">Odhlásit</a>
+                        <a href="?page=logout" class="btn btn-outline-danger">Odhlásit</a>
                     </li>
             {% endif %}
         </ul>
