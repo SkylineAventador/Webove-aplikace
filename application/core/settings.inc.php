@@ -35,7 +35,7 @@ const PAGES = array(
     "main" => array("file" => "controller_main.class.php", "object" => "Controller_Main",
         "title" => "Hlavní stránka"),
     "users" => array("file" => "controller_users.class.php", "object" => "Controller_Users",
-        "title" => "Uživateli"),
+        "title" => "Uživatele"),
     "registration" => array("file" => "controller_registration.class.php",
         "object" => "Controller_Registration",
         "title" => "Registrace uživatele"),

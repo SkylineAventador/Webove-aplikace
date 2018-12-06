@@ -5,7 +5,6 @@
  * Date: 28.10.2018
  * Time: 12:12
  */
-global $tplData;
 ?>
 <!DOCTYPE html>
 <html lang="cs">
@@ -15,14 +14,11 @@ global $tplData;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mainOwnStyles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-          integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-          crossorigin="anonymous">
     <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div class="bg-dark container-fluid">
+<div class="bg-dark container_fluid">
     <div class="container border shadow-lg bg-white rounded pt-3"
             style="display: flex; flex-wrap: wrap; justify-content: space-between">
         <?php

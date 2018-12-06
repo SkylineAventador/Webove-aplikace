@@ -25,22 +25,12 @@ class Controller_Users {
      *  Vrati obsah stranky
      * @return string Obsah stranky
      */
-    public function getResult()
+    public function getResult(Twig_Environment $twig, $p_tpl_name, $tplData)
     {
-        // TODO - nastaveni globalnich promennych pro sablonu
-        global $tplData;
-        // TODO - naplneni globalnich promennych
-        //$tplData['title'] = "Uzivatele konference";
-        $tplData['data'] = $this->db->getAllUsers();
-        //// vypsani prislusne sablony
-        // zapnu output buffer pro odchyceni vypisu sablony
-        ob_start();
-        // pripojim sablonu, cimz ji i vykonam
-        require "application/views/users_view.php";
-        // ziskam obsah output bufferu, tj. vypsanou sablonu
-        $obsah = ob_get_clean();
+        $tplData['users'] = $this->db->getAllUsers();
 
-        // vratim sablonu naplnenou daty
-        return $obsah;
+        $page_template = $twig->loadTemplate($p_tpl_name);
+
+        return $page_template->render($tplData);
     }
 }

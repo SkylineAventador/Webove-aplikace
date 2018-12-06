@@ -19,7 +19,8 @@
          class="navbar navbar-dark navbar-expand bg-dark fixed-top w-100 d-block">
         <ul class="navbar-nav">
             <li class="navbar-brand">
-                <a href="index2.php?page=main" class="text-white">Konference</a>
+                <a href="index2.php?page=main" class="text-white"
+                   style="text-decoration: none">Konference</a>
             </li>
             <li class="nav-item mr-2">
                 <a href="?page=articles" class="btn btn-outline-warning">Publikace</a>
@@ -86,6 +87,17 @@
                     <li class="nav-item mr-2">
                         <a href="?page=info" class="btn btn-outline-warning">Informace</a>
                     </li>
+
+                        {#BIG ERROR, FIX IT!!!!#}
+                        {#{% if user_db_info[0]["idprava"] == 0 %} #}{# Je-li autorem#}
+                            {#<li class="nav-item">#}
+                                {#<a href="?page=activity" class="btn btn-outline-primary">Moje prispěvky</a>#}
+                            {#</li>#}
+                            {#{% elseif user_db_info[0]["idprava"] == 3 %} #}{# Je-li rezenzent #}
+                                {#<li class="nav-item">#}
+                                    {#<a href="?page=activity" class="btn btn-outline-primary">Moje rezenze</a>#}
+                                {#</li>#}
+                        {#{% endif %}#}
 
                     <li id="uTopInfoCard"
                         class="container bg-success text-white rounded mr-2 pt-1 w-auto">

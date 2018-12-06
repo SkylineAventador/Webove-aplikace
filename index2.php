@@ -59,10 +59,6 @@ $tplData['title'] = PAGES[$page]['title'];
 $tplData['currentPage'] = $page;
 
 
-//TEST
-//$con_usrLogin->logout();
-//$con_usrLogin->login("Dmytro Kravtsov");
-
 //Prihlaseni -> je odeslan formular prihlaseni?
 if (isset($_POST["sbmt_lg_btn"])){
     $con_usrLogin->identifyUserDB($tplData);
