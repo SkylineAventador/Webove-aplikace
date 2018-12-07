@@ -89,15 +89,15 @@
                     </li>
 
                         {#BIG ERROR, FIX IT!!!!#}
-                        {% if user_db_info[0]["idprava"] == 0 %}
+                        {% if user_db_info[5] == 0 %}
                             <li class="nav-item">
                                 <a href="?page=activity" class="btn btn-outline-primary">Moje Prispěvky</a>
                             </li>
-                            {% elseif user_db_info[0]["idprava"] == 3 %}
+                            {% elseif user_db_info[5] == 3 %}
                                 <li class="nav-item">
                                     <a href="?page=activity" class="btn btn-outline-primary">Moje Rezenze</a>
                                 </li>
-                            {% elseif user_db_info[0]["idprava"] == 2 %}
+                            {% elseif user_db_info[5] == 2 %}
                                 <li class="nav-item">
                                     <a href="?page=activity" class="btn btn-outline-primary">Správování</a>
                                 </li>

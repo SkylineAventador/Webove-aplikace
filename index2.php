@@ -13,7 +13,7 @@ require_once("application/core/settings.inc.php");
 
 //Creating global array type variable.
 //All references at page controllers will use this variable declared at index.php.
-global $tplData;
+$tplData = array();
 
 require (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
 $con_usrLogin = new Controller_uLogin();
@@ -81,4 +81,6 @@ echo $con->getResult($twig, $p_tpl_name, $tplData); //TWIG
 $footer_template = $twig->loadTemplate("footer.tpl.twig");
 echo $footer_template->render($tplData);
 
-//var_dump($tplData["user_db_info"]);
+echo "<pre>";
+print_r($_COOKIE);
+echo "</pre>";

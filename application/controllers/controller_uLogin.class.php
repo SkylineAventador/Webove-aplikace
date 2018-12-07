@@ -51,6 +51,8 @@ class Controller_uLogin{
     public function getUserInfo(){
         $name = $this->ses->readSession($this->dName);
         $date = $this->ses->readSession($this->dDate);
+        global $tplData;
+        $tplData["user_db_info"] = $this->ses->readSessionData($name);
         return "Uživatel: $name <br>Přihlášení: $date";
     }
 
@@ -70,5 +72,16 @@ class Controller_uLogin{
         $tplData["user_db_info"] = $model_con->user_identify_DB($_POST["lfModal_uname"],
             $_POST["lfModal_psw"]);
         $this->login($tplData["user_db_info"][0]['jmeno']);
+        $this->ses->addSessionData($tplData["user_db_info"][0]['jmeno'], $tplData["user_db_info"][0]);
     }
+
+    /**
+     * @return User_Session
+     */
+    public function getSes()
+    {
+        return $this->ses;
+    }
+
+
 }
