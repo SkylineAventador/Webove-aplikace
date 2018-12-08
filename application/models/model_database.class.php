@@ -44,7 +44,7 @@ class Model_Database {
      *  @return array Obsah spravy uzivatelu.
      */
     public function getAllUsers(){
-        $stm = $this->pdo->query("SELECT jmeno, email FROM ".TAB_USERS);
+        $stm = $this->pdo->query("SELECT jmeno, email, idprava FROM ".TAB_USERS);
         return $stm->fetchAll();
     }
 

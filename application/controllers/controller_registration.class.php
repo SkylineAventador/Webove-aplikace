@@ -7,21 +7,6 @@
  */
 class Controller_Registration {
 
-//    public function __construct(){
-//        $this->model = new Model_Registration();
-//        $this->view = new View();
-//    }
-//
-//    function action_index()
-//    {
-//        $this->view->generate('registration_view.php', 'template_view.php');
-//    }
-//
-//    function action_submit(){
-//        $this->model->submit_registration();
-//
-//    }
-
     private $db;
 
     public function __construct()
@@ -35,25 +20,16 @@ class Controller_Registration {
      *  Vrati obsah stranky
      * @return string Obsah stranky
      */
-    public function getResult()
+    public function getResult(Twig_Environment $twig, $p_tpl_name, $tplData)
     {
-        // nastaveni globalnich promennych pro sablonu
-        //global $tplData;
+        if (isset($_POST["reg_submitBtn"])) {
+            $this->submit_registration();
+            unset($_POST["reg_submitBtn"]);
+            return require_once "application/views/service/regComplete_view.php";
+        }
+        $page_template = $twig->loadTemplate($p_tpl_name);
 
-        // naplneni globalnich promennych
-        //$tplData['title'] = "Uzivatele konference";
-        //$tplData['data'] = $this->db->getAllUsers();
-
-        //// vypsani prislusne sablony
-        // zapnu output buffer pro odchyceni vypisu sablony
-        ob_start();
-        // pripojim sablonu, cimz ji i vykonam
-        require "application/views/registration_view.php";
-        // ziskam obsah output bufferu, tj. vypsanou sablonu
-        $obsah = ob_get_clean();
-
-        // vratim sablonu naplnenou daty
-        return $obsah;
+        return $page_template->render($tplData);
     }
 
     public function submit_registration(){

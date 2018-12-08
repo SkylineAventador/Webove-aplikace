@@ -73,8 +73,13 @@ class Controller_uLogin{
         global $tplData;
         $tplData["user_db_info"] = $model_con->user_identify_DB($_POST["lfModal_uname"],
             $_POST["lfModal_psw"]);
-        $this->login($tplData["user_db_info"][0]['jmeno']);
-        $this->ses->addSession($this->user_data, $tplData["user_db_info"][0]);
+        if (!empty($tplData["user_db_info"])) {
+            $this->login($tplData["user_db_info"][0]['jmeno']);
+            $this->ses->addSession($this->user_data, $tplData["user_db_info"][0]);
+        } else{
+            ?><script>alert("Zadal(a) jste špatné přihlášovací údaje. " +
+                    "Zkuste prosím ještě jednou.")</script><?php
+        }
     }
 
     /**

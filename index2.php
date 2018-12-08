@@ -75,9 +75,10 @@ $header_template = $twig->loadTemplate("header.tpl.twig");
 echo $header_template->render($tplData);
 
 //Printing a processed page template output depending on authorisation.
+$allowedPages = array("main","articles","error_404", "registration");
 if ($con_usrLogin->getSes()->isSessionSet("user_data")){
     echo $con->getResult($twig, $p_tpl_name, $tplData); //TWIG
-} else if($page == "main" || $page == "articles"){
+} else if(in_array($page,$allowedPages)){
     echo $con->getResult($twig, $page.".tpl.twig", $tplData);
 } else{
     echo $con->getResult($twig, "not_authorised.tpl.twig", $tplData);
@@ -87,6 +88,6 @@ if ($con_usrLogin->getSes()->isSessionSet("user_data")){
 $footer_template = $twig->loadTemplate("footer.tpl.twig");
 echo $footer_template->render($tplData);
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+//echo "<pre>";
+//print_r($_SESSION);
+//echo "</pre>";
