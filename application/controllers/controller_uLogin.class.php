@@ -51,11 +51,11 @@ class Controller_uLogin{
      *  @return string Informace o uzivateli.
      */
     public function getUserInfo(){
-        $name = $this->ses->readSession($this->dName);
-        $date = $this->ses->readSession($this->dDate);
+//        $name = $this->ses->readSession($this->dName);
+//        $date = $this->ses->readSession($this->dDate);
         global $tplData;
-        $tplData["user_db_info"] = $this->ses->readSession($name);
-        return "Uživatel: $name <br>Přihlášení: $date";
+        $tplData["user_db_info"] = $this->ses->readSession($this->user_data);
+        return $this->ses->readSession($this->dDate);
     }
 
     /**

@@ -89,15 +89,15 @@
                     </li>
 
                         {#BIG ERROR, FIX IT!!!!#}
-                        {% if user_db_info[5] == 0 %}
+                        {% if user_db_info["idprava"] == 0 %}
                             <li class="nav-item">
                                 <a href="?page=activity" class="btn btn-outline-primary">Moje Prispěvky</a>
                             </li>
-                            {% elseif user_db_info[5] == 3 %}
+                            {% elseif user_db_info["idprava"] == 3 %}
                                 <li class="nav-item">
                                     <a href="?page=activity" class="btn btn-outline-primary">Moje Rezenze</a>
                                 </li>
-                            {% elseif user_db_info[5] == 2 %}
+                            {% elseif user_db_info["idprava"] == 2 %}
                                 <li class="nav-item">
                                     <a href="?page=activity" class="btn btn-outline-primary">Správování</a>
                                 </li>
@@ -107,7 +107,20 @@
                         class="container bg-success text-white rounded mr-2 pt-1 w-auto">
                         {{ user_name }}
                         <div id="uTopInfoCard-dropdown" class="rounded text-dark p-2">
-                            {{ user_LogData | raw }}
+                                <p>Jmeno: {{ user_db_info.jmeno }}</p>
+                                {#{% switch user_db_info.idprava %}#}
+                                    {% if user_db_info.idprava == 0 %}
+                                        {% set idpravaName = "<span style=\"color: blue\">Autor</span>" %}
+                                    {% elseif user_db_info.idprava == 1 %}
+                                        {% set idpravaName = "<span style=\"color: purple\">Tvůrce</span>" %}
+                                    {% elseif user_db_info.idprava == 2 %}
+                                        {% set idpravaName = "<span style=\"color: red\">Správce</span>" %}
+                                    {% elseif user_db_info.idprava == 3 %}
+                                        {% set idpravaName = "<span style=\"color: green\">Recenzent</span>" %}
+                                    {% endif %}
+                                {#{% endswitch %}#}
+                                <p>Role: {{ idpravaName | raw }}</p>
+                                <p>Datum přihlášení: {{ user_LogData }}</p>
                         </div>
                     </li>
                     <li class="nav-item">

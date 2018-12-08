@@ -74,11 +74,14 @@ if ($con_usrLogin->isUserLoged()){
 $header_template = $twig->loadTemplate("header.tpl.twig");
 echo $header_template->render($tplData);
 
-if ($con_usrLogin->getSes()->isSessionSet($con_usrLogin->getDName())) {
-//Printing a processed page template output.
+//Printing a processed page template output depending on authorisation.
+if ($con_usrLogin->getSes()->isSessionSet("user_data")){
     echo $con->getResult($twig, $p_tpl_name, $tplData); //TWIG
+} else if($page == "main" || $page == "articles"){
+    echo $con->getResult($twig, $page.".tpl.twig", $tplData);
+} else{
+    echo $con->getResult($twig, "not_authorised.tpl.twig", $tplData);
 }
-
 
 //Connecting and printing footer template.
 $footer_template = $twig->loadTemplate("footer.tpl.twig");
