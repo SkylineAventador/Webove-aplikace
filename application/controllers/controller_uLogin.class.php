@@ -9,6 +9,7 @@ class Controller_uLogin{
     private $ses; // objekt User_Session
     private $dName = "jmeno"; // nazev sessny pro jmeno
     private $dDate = "datum"; // nazev sessny pro datum
+    private $user_data = "user_data"; //nazev sessny pro data uzivatele
 
     /**
      *  Pri vytvoreni objektu zahaji session.
@@ -42,6 +43,7 @@ class Controller_uLogin{
     public function logout(){
         $this->ses->removeSession($this->dName);
         $this->ses->removeSession($this->dDate);
+        $this->ses->removeSession($this->user_data);
     }
 
     /**
@@ -52,7 +54,7 @@ class Controller_uLogin{
         $name = $this->ses->readSession($this->dName);
         $date = $this->ses->readSession($this->dDate);
         global $tplData;
-        $tplData["user_db_info"] = $this->ses->readSessionData($name);
+        $tplData["user_db_info"] = $this->ses->readSession($name);
         return "Uživatel: $name <br>Přihlášení: $date";
     }
 
@@ -72,7 +74,7 @@ class Controller_uLogin{
         $tplData["user_db_info"] = $model_con->user_identify_DB($_POST["lfModal_uname"],
             $_POST["lfModal_psw"]);
         $this->login($tplData["user_db_info"][0]['jmeno']);
-        $this->ses->addSessionData($tplData["user_db_info"][0]['jmeno'], $tplData["user_db_info"][0]);
+        $this->ses->addSession($this->user_data, $tplData["user_db_info"][0]);
     }
 
     /**

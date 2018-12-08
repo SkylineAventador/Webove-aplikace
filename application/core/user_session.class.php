@@ -13,8 +13,8 @@ class User_Session {
      */
     public function __construct(){
         session_start(); // zahajim
-        require_once "application/core/user_cookies.class.php";
-        $this->con_cookies = new User_Cookies();
+//        require_once "application/core/user_cookies.class.php";
+//        $this->con_cookies = new User_Cookies();
     }
 
     /**
@@ -56,20 +56,13 @@ class User_Session {
         unset($_SESSION[$name]);
     }
 
-    public function addSessionData($name, array $data)
-    {
-        $cislo_udaje = 0;
-        foreach ($data as $dataIndex) {
-            $_SESSION[$name][$cislo_udaje] = $dataIndex;
-            $cislo_udaje ++;
-        }
-    }
-
-    public function readSessionData($name)
-    {
-        if (!empty($_SESSION[$name])) {
-            return $_SESSION[$name];
-        } else
-            return null;
-    }
+//    public function addSessionData($name, $data)
+//    {
+//        $this->addSession($name, $data);
+//    }
+//
+//    public function readSessionData($name)
+//    {
+//        $this->readSession($name);
+//    }
 }
