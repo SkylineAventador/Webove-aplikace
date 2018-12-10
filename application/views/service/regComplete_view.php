@@ -1,0 +1,1 @@
+<h1 class="text-center">Registrace uzivatele probehla uspesne</h1>

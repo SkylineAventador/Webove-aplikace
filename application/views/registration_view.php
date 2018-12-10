@@ -4,7 +4,21 @@
  * User: Dimit
  * Date: 03.11.2018
  * Time: 20:26
- */?>
+ */
+$con_reg = new Controller_Registration();
+
+//if (isset($_POST['submitBtn'])){
+//    if (isset($_POST['action']) && $_POST['action'] == "../index2.php?page=registration"){
+//        $con_reg->submit_registration();
+//    } else {
+//        echo "<p class='text-white'>Chyba ulozeni uzivatele</p>";
+//    }
+//}
+//if (isset($_POST['submitBtn'])) {
+//    $this->submit_registration();
+//    require_once "application/views/service/regComplete_view.php";
+//}
+?>
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -19,7 +33,7 @@
         <div class="container w-50 pb-2 rounded bg-light" style="margin-top: 8vh">
             <h1 class="text-center text-dark">Registrace nového uživatele</h1>
 
-            <form id="regForm" action="registration/submit" method="post">
+            <form id="regForm" action="" method="post">
                 <div class="form-group">
                     <label for="nameTF">Jméno a příjmení</label>
                     <input type="text" class="form-control" id="nameTF"
@@ -28,8 +42,7 @@
                 <div class="form-group">
                     <label for="loginTF">Login</label>
                     <input type="text" class="form-control" id="loginTF"
-                           placeholder="JNovak2018" name="regUsrLogin"
-                           onblur="validate()">
+                           placeholder="JNovak2018" name="regUsrLogin">
                 </div>
                 <div class="form-group">
                     <label for="passwordTF">Heslo</label>
@@ -53,8 +66,11 @@
                     <label class="form-check-label" for="rememberCB">Pamatovat si mě</label>
                 </div>
                 <div class="container text-center">
-                    <button type="submit" id="btn-submit" class="btn btn-primary" disabled="disabled">Registrovat</button>
-                    <a href="main" class="btn btn-danger">Storno</a>
+                    <button type="submit" id="btn-submit" class="btn btn-primary"
+                            name="submitBtn" disabled>Registrovat</button>
+                    <a href="?page=main" class="btn btn-danger">Storno</a>
+                    <button type="reset" name="resetBtn"
+                            class="btn btn-outline-warning float-right">Vymazat data</button>
                 </div>
             </form>
         </div>

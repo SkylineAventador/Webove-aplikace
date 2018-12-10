@@ -1,21 +1,21 @@
 <?php
-
 /**
- *  Objekt pro praci s cookies.
- *  @author Michal Nykl
+ * Created by PhpStorm.
+ * User: Dimit
+ * Date: 11.11.2018
+ * Time: 14:42
  */
-class MyCookies{
-    
+class User_Cookies {
     private $defExpire; // 1 den, v konstruktoru
-    
+
     /**
      *  Pri vytvoreni objektu nastavim defaultni cas expirace cookies.
      */
     public function __construct(){
         $this->defExpire = 60*60*24;
     }
-    
-    
+
+
     /**
      *  Funkce pro ulozeni hodnoty do cookies.
      *  @param string $name Jmeno promenne.
@@ -24,10 +24,10 @@ class MyCookies{
     public function addCookie($name, $value, $expire=null){
         if(!isset($expire)){ // defaultni
             $expire = $this->defExpire;
-        }        
-        setcookie($name,$value,time()+$expire);        
+        }
+        setcookie($name,$value,time()+$expire);
     }
-    
+
     /**
      *  Vrati hodnotu daneho cookies nebo null, pokud cookies neni nastavena.
      *  @param string $name Jmeno promenne.
@@ -40,7 +40,7 @@ class MyCookies{
             return null;
         }
     }
-    
+
     /**
      *  Je cookie nastavena?
      *  @return boolean
@@ -48,8 +48,8 @@ class MyCookies{
     public function isCookieSet($name){
         return isset($_COOKIE[$name]);
     }
-    
-    
+
+
     /**
      *  Odstrani danou cookie.
      *  @param string $name Jmeno promenne.
@@ -57,8 +57,4 @@ class MyCookies{
     public function removeCookie($name){
         $this->addCookie($name,null,0);
     }
-    
 }
-
-
-?>

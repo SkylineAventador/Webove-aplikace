@@ -1,0 +1,47 @@
+<div class="container w-50 pb-2 rounded bg-light border shadow-lg" style="margin-top: 10vh">
+    <h1 class="text-center text-dark">Registrace nového uživatele</h1>
+
+    <form id="regForm" action="" method="post">
+        <div class="form-group">
+            <label for="nameTF">Jméno a příjmení</label>
+            <input type="text" class="form-control" id="nameTF"
+                   placeholder="Jan Novák" name="regUsrJmeno">
+        </div>
+        <div class="form-group">
+            <label for="loginTF">Login</label>
+            <input type="text" class="form-control" id="loginTF"
+                   placeholder="JNovak2018" name="regUsrLogin">
+        </div>
+        <div class="form-group">
+            <label for="passwordTF">Heslo</label>
+            <input type="password" class="form-control" id="passwordTF"
+                   placeholder="Zadejte Vase heslo" name="regUsrPassword"
+                   oninput="validateForm()">
+        </div>
+        <div class="form-group">
+            <label for="passwordCheckTF">Ověření hesla</label>
+            <input type="password" class="form-control" id="passwordCheckTF"
+                   placeholder="Zopakujte Vase heslo jěště jednou"
+                   aria-describedby="pswdCheckID"
+                   oninput="validateForm()">
+            <output id="pswdCheckID" class="form-text text-muted"></output>
+        </div>
+        <div class="form-group">
+            <label for="emailTF">E-mail</label>
+            <input type="text" class="form-control" id="emailTF"
+                   placeholder="jannovak@seznam.cz" name="regUsrEmail">
+        </div>
+        {#<div class="form-check">#}
+            {#<input type="checkbox" class="form-check-input" id="rememberCB">#}
+            {#<label class="form-check-label" for="rememberCB">Pamatovat si mě</label>#}
+        {#</div>#}
+        <div class="container text-center mb-2">
+            <button type="submit" id="reg_btn_submit" class="btn btn-primary w-25"
+                    name="reg_submitBtn" disabled="disabled"
+                    onclick="newSubmitValidity()">Registrovat</button>
+            <a href="?page=main" class="btn btn-danger float-left w-25">Storno</a>
+            <button type="reset" name="resetBtn"
+                    class="btn btn-outline-warning float-right w-25">Vymazat data</button>
+        </div>
+    </form>
+</div>

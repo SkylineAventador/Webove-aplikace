@@ -1,0 +1,31 @@
+<div class="bg-white container_fluid">
+    <div class="container border shadow-lg bg-white rounded pt-3"
+         style="display: flex; flex-wrap: wrap; justify-content: space-between">
+
+        {% for user in users %}
+            {% if user.idprava == 0 %}
+                {% set idpravaName = "<span style=\"color: blue\">Autor</span>" %}
+            {% elseif user.idprava == 1 %}
+                {% set idpravaName = "<span style=\"color: darkred\">Tvůrce</span>" %}
+            {% elseif user.idprava == 2 %}
+                {% set idpravaName = "<span style=\"color: red\">Správce</span>" %}
+            {% elseif user.idprava == 3 %}
+                {% set idpravaName = "<span style=\"color: green\">Recenzent</span>" %}
+            {% endif %}
+        <div class="card m-2" style="flex: 0 1 calc(25% - 1em)">
+            <img class="card-img-top" src="../../images/unknown_user_img.png"
+                 alt="User image">
+            <div class="card-body">
+                <h4 class="card-title text-center">{{ user.jmeno|e }}</h4>
+                <p class="card-text"><b>E-mail:</b> {{ user.email|e }}</p>
+                <p class="card-text"><b>Role:</b> {{ idpravaName|raw }}</p>
+                <a href="#" class="btn btn-primary" style="display: block">Zobrazit profil</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="container text-center my-3">
+            <a href="../index2.php?page=main" class="btn btn-danger">Hlavni stranka</a>
+        </div>
+    </div>
+</div>

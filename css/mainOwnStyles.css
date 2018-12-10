@@ -1,11 +1,23 @@
-.btn{
-    margin-bottom: 5px;
-}
-
 body{
     margin: 0;
     padding: 0;
 }
+#navbar {
+    top: 0;
+    transition: top 0.3s;
+}
+
+#uTopInfoCard-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: auto;
+
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#uTopInfoCard:hover #uTopInfoCard-dropdown {display: block}
 
 .gBox{
     width: 100%;
@@ -49,11 +61,15 @@ body{
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-div.userCard {
-    width: 200px;
-    display: inline-block;
-    margin: 10px;
+/*div.usrCBG {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
+
+div.usrCCard {
+    flex: 0 1 calc(25% - 1em);
+}*/
 
 div.usrBgSq{
     background-color: rgba(255,255,255,0.75);

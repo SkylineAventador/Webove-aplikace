@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <title>{{ title | striptags }}</title>
+    <meta charset="utf-8">
+    <!-- Proper bootstrap elements scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/mainOwnStyles.css">
+    <link rel="stylesheet" href="../../css/lfModalStyle.css">
+
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/reg_validate.js"></script>
+</head>
+<body>
+
+<div class="container_fluid" style="margin-bottom: 55px">
+    <div id="navbar"
+         class="navbar navbar-dark navbar-expand bg-dark fixed-top w-100 d-block">
+        <ul class="navbar-nav">
+            <li class="navbar-brand">
+                <a href="index2.php?page=main" class="text-white"
+                   style="text-decoration: none">Konference</a>
+            </li>
+            <li class="nav-item mr-2">
+                <a href="?page=articles" class="btn btn-outline-warning">Publikace</a>
+            </li>
+            {% if user_LogData is not defined %}
+                <li class="nav-item ml-auto mr-2">
+                    <button type="button" class="btn btn-outline-info"
+                            onclick="document.getElementById('lfModal').style.display='block'">Prihlasit se
+                    </button>
+                </li>
+
+                {#==============================Formular prihlaseni ZACATEK======================================#}
+                <div id="lfModal" class="modal">
+                    <form id="lfModal" class="modal-content animate col-md-6" method="post">
+                    <div id="lfModal" class="imgcontainer">
+                            <span onclick="document.getElementById('lfModal').style.display='none'" class="close"
+                                  title="Close Login Form">&times;</span>
+                    </div>
+                    <h4 class="text-dark text-center">Přihlášení uživatele</h4>
+
+                    <div id="lfModal" class="container">
+                        <label for="uname"><b>Login:</b></label>
+                        <input id="lfModal" type="text" placeholder="Enter Username" name="lfModal_uname" required>
+
+                        <label for="psw"><b>Heslo:</b></label>
+                        <input id="lfModal" type="password" placeholder="Enter Password" name="lfModal_psw"
+                               required>
+
+                        <button id="lfModal" name="sbmt_lg_btn" type="submit" class="btn btn-success w-100">Pokračovat</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Pamatovat si mě
+                        </label>
+                    </div>
+
+                    <div id="lfModal" class="container">
+                        <button id="lfModal" type="button"
+                                onclick="document.getElementById('lfModal').style.display='none'"
+                                class="cancelbtn">Storno</button>
+                        <span id="lfModal" class="psw">Zapoměl(a) jste <a href="#">heslo</a>?</span>
+                    </div>
+                    </form>
+                </div>
+                {#=========================Formular prihlaseni KONEC=====================================#}
+
+                {% if currentPage != "registration" %}
+                    <li class="nav-item">
+                        <a href="?page=registration" class="btn btn-outline-info">Registrace</a>
+                    </li>
+                {% endif %}
+
+                {% else %}
+                    <li class="nav-item mr-2">
+                        <a href="?page=users" class="btn btn-outline-warning">Uživatele</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="?page=terms" class="btn btn-outline-warning">Termíny</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="?page=info" class="btn btn-outline-warning">Informace</a>
+                    </li>
+
+                    <li id="uTopInfoCard"
+                        class="container bg-success text-white rounded mr-2 pt-1 w-auto">
+                        {{ user_db_info.jmeno }}
+                        <div id="uTopInfoCard-dropdown" class="rounded text-dark p-2"
+                             style="right: 1vw">
+                                <p>Jmeno: {{ user_db_info.jmeno }}</p>
+                                    {% if user_db_info.idprava == 0 %}
+                                        {% set idpravaName = "<span style=\"color: blue\">Autor</span>" %}
+                                    {% elseif user_db_info.idprava == 1 %}
+                                        {% set idpravaName = "<span style=\"color: darkred\">Tvůrce</span>" %}
+                                    {% elseif user_db_info.idprava == 2 %}
+                                        {% set idpravaName = "<span style=\"color: red\">Správce</span>" %}
+                                    {% elseif user_db_info.idprava == 3 %}
+                                        {% set idpravaName = "<span style=\"color: green\">Recenzent</span>" %}
+                                    {% endif %}
+                                <p>Role: {{ idpravaName | raw }}</p>
+                                <p>Datum přihlášení: {{ user_LogData }}</p>
+                                {% if user_db_info["idprava"] == 0 %}
+                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Prispěvky</a>
+                                {% elseif user_db_info["idprava"] == 3 %}
+                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Rezenze</a>
+                                {% elseif user_db_info["idprava"] == 2 %}
+                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Správování</a>
+                                {% endif %}
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?page=logout" class="btn btn-outline-danger">Odhlásit</a>
+                    </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

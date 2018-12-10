@@ -14,37 +14,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mainOwnStyles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-          integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-          crossorigin="anonymous">
     <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div class="bg-dark" style="height: 100vh">
-    <div class="container col-10 border shadow-lg bg-white rounded">
+<div class="bg-dark container_fluid">
+    <div class="container border shadow-lg bg-white rounded pt-3"
+            style="display: flex; flex-wrap: wrap; justify-content: space-between">
         <?php
-            $dbh = new Model_Users();
-            $dbh->load_users();
-//            for ($i = 0; $i < 10; $i++) {
-//                echo crUsrCard();
-//            }
-//
-//            function crUsrCard(){
-//               $returnString = "<div class=\"card userCard\">
-//                   <img class=\"card-img-top\" src=\"../../images/unknown_user_img.png\"
-//                        alt=\"User image\">
-//                   <div class=\"card-body\">
-//                      <h4 class=\"card-title\">USER NAME</h4>
-//                     <p class=\"card-text\">USER DESCRIPTION.</p>
-//                     <a href=\"#\" class=\"btn btn-primary\" style=\"display: block\">Zobrazit profil</a>
-//                  </div>
-//               </div>";
-//               return $returnString;
-//            }
+        foreach ($tplData['data'] as $user) {
+
+            ?>
+
+            <div class="card m-2" style="flex: 0 1 calc(25% - 1em)">
+                <img class="card-img-top" src="../../images/unknown_user_img.png"
+                    alt="User image">
+                <div class="card-body">
+                    <h4 class="card-title text-center"><?php echo "$user[jmeno]" ?></h4>
+                    <p class="card-text"><?php echo "$user[email]" ?></p>
+                    <a href="#" class="btn btn-primary" style="display: block">Zobrazit profil</a>
+                </div>
+            </div>
+
+            <?php
+        }
         ?>
-        <div class="container text-center">
-            <a href="main" class="btn btn-danger">Hlavni stranka</a>
+        <div class="container text-center mt-2">
+            <a href="../index2.php?page=main" class="btn btn-danger">Hlavni stranka</a>
         </div>
     </div>
     <footer>
