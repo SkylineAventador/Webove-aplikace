@@ -27,10 +27,10 @@ if(isset($_GET["page"]) && array_key_exists($pageName, PAGES)){
 } else {
     if ($pageName == "logout") {
         $con_usrLogin->logout();
-        header("Location: ?page=main");
+        header("Location: /index2.php?page=main");
         die();
     } else
-        header("Location: ?page=error_404");
+        header("Location: /index2.php?page=error_404");
         die();
 }
 

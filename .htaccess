@@ -25,6 +25,7 @@ DirectoryIndex index2.php
 
 # hezke URL adresy (var.2),
 # zdroj: http://www.samuraj-cz.com/clanek/pekne-adresy-aneb-cool-uri-aneb-apache-mod-rewrite/
+#RewriteRule ^localhost/$ /index2.php?page=main [R]
 RewriteRule ^(.*)/$ /index2.php?page=$1 [L,QSA]
 
 # vlastni chybove stranky
