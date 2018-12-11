@@ -6,8 +6,13 @@ function validateForm() {
 
         $(document).ready(function () {
             if (pass1.val() === pass2.val()) {
-                msgText.html("<b>OK:</b> Zadaná hesla jsou stejná");
-                sbmtBtn.prop('disabled', false);
+                if(pass1.val() === "" || pass2.val() === ""){
+                    msgText.html("<b>Chyba:</b> Pole na heslo nejsou vyplněná.");
+                    sbmtBtn.prop('disabled', true);
+                } else {
+                    msgText.html("<b>OK:</b> Zadaná hesla jsou stejná");
+                    sbmtBtn.prop('disabled', false);
+                }
             } else {
                 msgText.html("<b>Chyba:</b> Zadaná hesla se liší, " +
                     "zkuste proším ještě jednou.");

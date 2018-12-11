@@ -51,17 +51,16 @@
                         <input id="lfModal" type="password" placeholder="Enter Password" name="lfModal_psw"
                                required>
 
-                        <button id="lfModal" name="sbmt_lg_btn" type="submit" class="btn btn-success w-100">Pokračovat</button>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Pamatovat si mě
-                        </label>
-                    </div>
-
-                    <div id="lfModal" class="container">
-                        <button id="lfModal" type="button"
-                                onclick="document.getElementById('lfModal').style.display='none'"
-                                class="cancelbtn">Storno</button>
-                        <span id="lfModal" class="psw">Zapoměl(a) jste <a href="#">heslo</a>?</span>
+                        {#<div id="lfModal" class="container-fluid">#}
+                            <button id="lfModal" name="sbmt_lg_btn" type="submit" class="btn btn-success w-50">Pokračovat</button>
+                            <button id="lfModal" type="button"
+                                    onclick="document.getElementById('lfModal').style.display='none'"
+                                    class="cancelbtn w-25 float-right">Storno</button>
+                            {#<span id="lfModal" class="psw">Zapoměl(a) jste <a href="#">heslo</a>?</span>#}
+                        {#</div>#}
+                        {#<label>#}
+                            {#<input type="checkbox" checked="checked" name="remember"> Pamatovat si mě#}
+                        {#</label>#}
                     </div>
                     </form>
                 </div>
