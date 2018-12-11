@@ -14,6 +14,7 @@ function validateForm() {
                 sbmtBtn.prop('disabled', true);
             }
         });
+        //There are some problebms?
 }
 
 function newSubmitValidity() {
