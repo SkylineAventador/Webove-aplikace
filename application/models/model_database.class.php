@@ -33,8 +33,7 @@ class Model_Database {
      *  @return array Obsah uvodu.
      */
     public function getMPArticles(){
-        //TODO - Rework the querry!
-        $stm = $this->pdo->query("SELECT * FROM ".TAB_ARTICLES);
+        $stm = $this->pdo->query("SELECT * FROM ".TAB_ARTICLES." WHERE idhodnoceni > 0");
         return $stm->fetchAll();
     }
 

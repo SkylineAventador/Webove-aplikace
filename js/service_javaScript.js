@@ -19,24 +19,31 @@ function validateForm() {
                 sbmtBtn.prop('disabled', true);
             }
         });
-        //There are some problebms?
 }
 
-function newSubmitValidity() {
-    // var inputs = $('#regForm').getElementsByClassName("form-control");
-    // var result = true;
-    // for (let i = 0; i < inputs.length; i++) {
-    //     if (inputs[i].val() === "") {
-    //         result = false;
-    //         break;
-    //     }
-    // }
-    // if (result) {
-    //     sbmtBtn.prop('disabled', false);
-    //     alert("Pole jsou vyplnene");
-    // } else {
-    //     sbmtBtn.prop('disabled', true);
-    //     alert("Pole jsou prazdne!");
-    // }
-    // $('#pswdCheckID').html("<b>Chyba:</b> Pole jsou prazdné.");
-}
+// Funkce potrebne pro sledovani a funkcionovani tlacitka "Scroll Nahoru"
+// /**
+//  * Pozorovani scrolovani stranky uzivatelem
+//  */
+// window.onscroll(function () {
+//     scrollTracking();
+// })
+// /**
+//  * Vykonny kod pri scrolovani stranky uzivatelem.
+//  * Skryvani nebo ukazani tlacitka "Nahoru"
+//  */
+// function scrollTracking() {
+//     if (document.documentElement.scrollTop > 50) {
+//         document.getElementById("scrl_tT_Btn").style.display = "block";
+//     } else {
+//         document.getElementById("scrl_tT_Btn").style.display = "none";
+//     }
+// }
+//
+// /**
+//  * Samotne scrolovani nahoru
+//  */
+// function scrollToTop() {
+//     document.documentElement.scrollTop = 0;
+// }
+
