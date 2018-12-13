@@ -23,7 +23,7 @@ define("TAB_ARTICLES", "prispevky"); //pro LOCALHOST
 const CONTROLLERS_DIRECTORY = "application/controllers";
 
 //adresar sablon TWIGU
-const TEMPLATES_DIRECTORY = "application/templates";
+const TEMPLATES_DIRECTORY = "application/views_twig";
 
 // defaultni webu
 const DEFAULT_PAGE = "main";

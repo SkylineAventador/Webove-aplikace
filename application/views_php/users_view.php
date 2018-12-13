@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/mainOwnStyles.css">
-    <script src="../../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../css/other_service.css">
+    <script src="../../js/Bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
 

@@ -25,7 +25,7 @@ class Controller_Registration {
         if (isset($_POST["reg_submitBtn"])) {
             $this->submit_registration();
             unset($_POST["reg_submitBtn"]);
-            return require_once "application/views/service/regComplete_view.php";
+            return require_once "application/views_php/service/regComplete_view.php";
         }
         $page_template = $twig->loadTemplate($p_tpl_name);
 

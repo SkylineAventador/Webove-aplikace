@@ -21,11 +21,11 @@ RewriteEngine on
 DirectoryIndex index2.php
 
 # hezke URL adresy (var.1), vyzaduje zpracování v php
-#RewriteRule ^(.*)/$ /index2.php [L,QSA]
+#RewriteRule ^(.*)/$ /index.php [L,QSA]
 
 # hezke URL adresy (var.2),
 # zdroj: http://www.samuraj-cz.com/clanek/pekne-adresy-aneb-cool-uri-aneb-apache-mod-rewrite/
-#RewriteRule ^localhost/$ /index2.php?page=main [R]
+#RewriteRule ^localhost/$ /index.php?page=main [R]
 RewriteRule ^(.*)/$ /index2.php?page=$1 [L,QSA]
 
 # vlastni chybove stranky

@@ -21,6 +21,29 @@ function validateForm() {
         });
 }
 
+// Login form functionality=============================================
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        document.getElementById("navbar").style.top = "-60px";
+    }
+    prevScrollpos = currentScrollPos;
+}
+
+// Ziskani elementu formulare prihlaseni
+var modal = document.getElementById("lfModal");
+
+// Pri kliknuti kamkoliv mimo oblast formulare, zavrit ho.
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+//======================================================================
+
 // Funkce potrebne pro sledovani a funkcionovani tlacitka "Scroll Nahoru"
 // /**
 //  * Pozorovani scrolovani stranky uzivatelem

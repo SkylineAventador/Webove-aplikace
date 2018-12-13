@@ -27,10 +27,10 @@ if(isset($_GET["page"]) && array_key_exists($pageName, PAGES)){
 } else {
     if ($pageName == "logout") {
         $con_usrLogin->logout();
-        header("Location: /index2.php?page=main");
+        header("Location: /index.php?page=main");
         die();
     } else
-        header("Location: /index2.php?page=error_404");
+        header("Location: /index.php?page=error_404");
         die();
 }
 
@@ -50,7 +50,7 @@ $p_tpl_name = "$page.tpl.twig";
 require_once "application/core/twig-master/lib/Twig/Autoloader.php";
 Twig_Autoloader::register();
 
-//Connecting the path to TWIG's templates folder.
+//Connecting the path to TWIG's views_twig folder.
 $loader = new Twig_Loader_Filesystem(TEMPLATES_DIRECTORY);
 $twig = new Twig_Environment($loader);
 
