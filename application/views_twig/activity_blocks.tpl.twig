@@ -1,0 +1,26 @@
+{% block autor_block %}
+    <div class="card-header">
+        <h2 class="text-dark text-center">Panel autora
+            <button type="button"
+                    class="btn btn-lg btn-outline-success float-right">Nový článek</button>
+        </h2>
+    </div>
+    <div class="card-body">
+        <h4 class="text-center">Dole se zobrazují články které patří Vám.
+            {#{{ NAZEVPROMENE.priradilAdmin }}.#}
+        </h4>
+        {% for data in activity_data %}
+            <div class="card shadow text-dark">
+                <div class="card-header" style="background-color: #b3ccff">
+                    Zveřejněno: <b>{{ data.date }}</b>.
+                    <button type="button"
+                        class="btn btn-outline-danger float-right">Smazat</button>
+                </div>
+                <div class="card-body">
+                    <h4>{{ data.title }}</h4>
+                    <p>{{ data.text }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
