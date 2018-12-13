@@ -1,6 +1,23 @@
-<div class="container-fluid border border-danger">
+<div class="container-fluid py-3">
 
-    <div class="container col-12 col-sm-12 text-center">
-        <h1 class="text-dark">Hello children.</h1>
-    </div>
+
+        <div class="card shadow text-dark">
+            <div class="card-header"><h2 class="text-dark text-center">Panel rezenzenta</h2></div>
+            <div class="card-body">
+                {% if user_db_info.idprava == 0 %}
+
+                    {{ block('prispevky_k_rezenzi') }}
+                {% endif %}
+            </div>
+        </div>
+
 </div>
+
+{% block prispevky_k_rezenzi %}
+    <h4 class="text-center">Dole mate nove clanky k rezenzi pridelene vam spravou.
+    {#{{ NAZEVPROMENE.priradilAdmin }}.#}
+    </h4>
+    {% for data in activity_data %}
+        {{ data.author }}
+    {% endfor %}
+{% endblock %}
