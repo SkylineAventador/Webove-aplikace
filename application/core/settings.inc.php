@@ -42,5 +42,7 @@ const PAGES = array(
     "error_404" => array("file" => "controller_error_404.class.php", "object" => "Controller_Error_404",
         "title" => "Error 404 - Stránka není nalezená"),
     "articles" => array("file" => "controller_articles.class.php", "object" => "Controller_Articles",
-        "title" => "Všechny publikace")
+        "title" => "Všechny publikace"),
+    "activity" => array("file" => "controller_activity.class.php", "object" => "Controller_Activity",
+        "title" => "Aktivita uživatele")
 );

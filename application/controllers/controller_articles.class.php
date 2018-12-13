@@ -1,12 +1,12 @@
 <?php
-class Controller_Articles{
+class Controller_Articles implements IController {
     private $db;
 
     public function __construct()
     {
         //Initalizing the database for future manipulates with it.
-        require_once("application/models/model_database.class.php");
-        $this->db = new Model_Database();
+        require_once("application/models/model_articles.class.php");
+        $this->db = new Model_Articles();
     }
 
     /**

@@ -5,7 +5,7 @@
  * Date: 11.11.2018
  * Time: 14:47
  */
-class Controller_uLogin{
+class Controller_uLogin { //Vyjimka pro IController interfejs, nepotrebuje vykreslovat sablonu.
     private $ses; // objekt User_Session
     private $dName = "jmeno"; // nazev sessny pro jmeno
     private $dDate = "datum"; // nazev sessny pro datum

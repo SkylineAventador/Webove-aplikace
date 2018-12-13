@@ -15,7 +15,9 @@ require_once("application/core/settings.inc.php");
 //All references at page controllers will use this variable declared at index.php.
 $tplData = array();
 
-require (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
+require_once('application/core/controllers_interface.php');
+require_once('application/models/model_database.class.php');
+require_once (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
 $con_usrLogin = new Controller_uLogin();
 
 // Testing if required page exists. If NO -> switching to default page.
@@ -35,8 +37,7 @@ if(isset($_GET["page"]) && array_key_exists($pageName, PAGES)){
 }
 
 // Connecting a necessary controller.
-require(CONTROLLERS_DIRECTORY ."/". PAGES[$page]['file']);
-
+require_once(CONTROLLERS_DIRECTORY ."/". PAGES[$page]['file']);
 //Obtaining a controller class name.
 $tmp = PAGES[$page]["object"];
 //Creating a controller instance.

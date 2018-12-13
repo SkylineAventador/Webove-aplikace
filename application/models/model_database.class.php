@@ -27,31 +27,4 @@ class Model_Database {
     {
         return $this->pdo;
     }
-
-    /**
-     *  Vrati seznam popularnich clanku pro uvodni stranku.
-     *  @return array Obsah uvodu.
-     */
-    public function getMPArticles(){
-        $stm = $this->pdo->query("SELECT * FROM ".TAB_ARTICLES." WHERE idhodnoceni > 0");
-        return $stm->fetchAll();
-    }
-
-
-    /**
-     *  Vrati seznam vsech uzivatelu pro spravu uzivatelu.
-     *  @return array Obsah spravy uzivatelu.
-     */
-    public function getAllUsers(){
-        $stm = $this->pdo->query("SELECT * FROM ".TAB_USERS);
-        return $stm->fetchAll();
-    }
-
-    /**
-     *  Smaze daneho uzivatele z DB.
-     *  @param integer $userId  ID uzivatele.
-     */
-    public function deleteUser($userId){
-
-    }
 }

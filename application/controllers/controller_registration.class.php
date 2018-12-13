@@ -5,15 +5,14 @@
  * Date: 03.11.2018
  * Time: 20:36
  */
-class Controller_Registration {
+class Controller_Registration implements IController {
 
     private $db;
 
     public function __construct()
     {
-        //Initalizing the database for future manipulates with it.
-        require_once("application/models/model_database.class.php");
-        $this->db = new Model_Database();
+        require_once "application/models/model_registration.class.php";
+        $this->db = new Model_Registration();
     }
 
     /**
@@ -33,9 +32,7 @@ class Controller_Registration {
     }
 
     public function submit_registration(){
-        require_once "application/models/model_registration.class.php";
-        $db = new Model_Registration();
-        $db->submit_registration();
+        $this->db->submit_registration();
     }
 
     //Konzervovano
