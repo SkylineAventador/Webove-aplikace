@@ -18,9 +18,8 @@
 </head>
 <body>
 <div class="container_fluid" style="margin-bottom: 55px">
-    <div id="navbar"
-         class="navbar navbar-dark navbar-expand bg-dark fixed-top w-100 d-block">
-        <ul class="navbar-nav">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100 d-block">
+        <ul class="navbar-nav collapse navbar-collapse" id="navigBar">
             <li class="navbar-brand">
                 <a href="?page=main" class="text-white"
                    style="text-decoration: none">Konference</a>
@@ -85,7 +84,7 @@
                     </li>
 
                     <li id="uTopInfoCard"
-                        class="container bg-success text-white rounded mr-2 pt-1 w-auto">
+                        class="container bg-success text-white rounded mr-2 py-2 w-auto">
                         {{ user_db_info.jmeno }}
                         <div id="uTopInfoCard-dropdown" class="rounded text-dark p-2"
                              style="right: 1vw">
@@ -115,7 +114,10 @@
                     </li>
             {% endif %}
         </ul>
-    </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navigBar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
 </div>
 {#Udelat neco s tlacitkem nahoru, nefunguje css styl z neznamych duvodu. Docasne vypnuto#}
 {#<button onclick="scrollToTop()" id="scrollToTopBtn" title="Nahoru">Nahoru</button>#}
