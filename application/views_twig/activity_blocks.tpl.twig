@@ -10,15 +10,20 @@
             {#{{ NAZEVPROMENE.priradilAdmin }}.#}
         </h4>
         {% for data in activity_data %}
-            <div class="card shadow text-dark">
-                <div class="card-header" style="background-color: #b3ccff">
-                    Zveřejněno: <b>{{ data.date }}</b>.
+            <div class="card shadow text-dark mb-5">
+                <div class="card-header" style="background-color: #ccccff">
+                    Zveřejněno: <b>{{ data.date }}</b>
                     <button type="button"
                         class="btn btn-outline-danger float-right">Smazat</button>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-justify bg-light">
                     <h4>{{ data.title }}</h4>
                     <p>{{ data.text }}</p>
+                </div>
+                <div class="card-footer" style="background-color: #ccccff">
+                    {% if data.idhodnoceni == -1 %}
+                        Hodnocení: <span style="color: red">Článek ještě nebyl recenzován.</span>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
