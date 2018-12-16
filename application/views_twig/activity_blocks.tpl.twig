@@ -22,7 +22,17 @@
                 </div>
                 <div class="card-footer" style="background-color: #ccccff">
                     {% if data.idhodnoceni == -1 %}
-                        Hodnocení: <span style="color: red">Článek ještě nebyl recenzován.</span>
+                        Hodnocení: <span style="color: red; font-weight: bold">Článek ještě nebyl recenzován</span>.
+                        {% else %}
+                            Hodnocení: <span style="color: green; font-weight: bold">Článek je recenzován</span>.
+                            <div>
+                                Datum hodnocení: {{ data.hodnoc_data.datum }}<br>
+                                Dosažená známka: {{ data.hodnoc_data.znamka }}<br>
+                                Jmeno recenzenta: <span style="color: green;font-weight: bold">
+                                    {{ data.hodnoc_data.rezenzent }}</span><br>
+                                Přidělená kategorie: {{ data.hodnoc_data.kategorie }}<br>
+                                Komentář k recenzi: {{ data.hodnoc_data.komentar }}
+                            </div>
                     {% endif %}
                 </div>
             </div>

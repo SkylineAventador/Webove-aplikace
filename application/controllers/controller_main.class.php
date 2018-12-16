@@ -22,7 +22,7 @@ class Controller_Main implements IController {
      */
     public function getResult(Twig_Environment $twig, $p_tpl_name, $tplData)
     {
-        $tplData['data'] = $this->db->getMPArticles();
+        $tplData['data'] = $this->db->getBestArticles();
 
         $page_template = $twig->loadTemplate($p_tpl_name);
 

@@ -101,11 +101,11 @@
                                 <p>Role: {{ idpravaName | raw }}</p>
                                 <p>Datum přihlášení: {{ user_LogData }}</p>
                                 {% if user_db_info["idprava"] == 0 %}
-                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Prispěvky</a>
+                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Příspěvky</a>
                                 {% elseif user_db_info["idprava"] == 3 %}
-                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Rezenze</a>
+                                    <a href="?page=activity" class="btn btn-outline-success d-block">Moje Recenze</a>
                                 {% elseif user_db_info["idprava"] == 2 %}
-                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Správování</a>
+                                    <a href="?page=activity" class="btn btn-outline-danger d-block">Správování</a>
                                 {% endif %}
                         </div>
                     </li>

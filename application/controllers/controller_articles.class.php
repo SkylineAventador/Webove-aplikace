@@ -15,7 +15,7 @@ class Controller_Articles implements IController {
      */
     public function getResult(Twig_Environment $twig, $p_tpl_name, $tplData)
     {
-        $tplData['data'] = $this->db->getMPArticles();
+        $tplData['data'] = $this->db->getAllArticles();
 
         $page_template = $twig->loadTemplate($p_tpl_name);
 
