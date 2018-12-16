@@ -12,13 +12,13 @@ class Model_Articles extends Model_Database{
     }
 
     public function getBestArticles(){
-        $stm = $this->getPdo()->query("SELECT * FROM ".TAB_ARTICLES." WHERE idhodnoceni > 0");
-
-        $return_data = $stm->fetchAll();
-
-//        for ($i = 0; $i < count($return_data); ++$i) {
-//
-//        }
-        return $return_data;
+        $stm = $this->getPdo()->query("SELECT prispevky.* 
+                                               FROM prispevky, hodnoceni 
+                                               WHERE hodnoceni.idhodnoceni = prispevky.idhodnoceni
+                                               AND hodnoceni.znamka = 1");
+//        echo "<pre>";
+//        print_r($stm->fetchAll());
+//        echo "</pre>";
+        return $stm->fetchAll();
     }
 }
