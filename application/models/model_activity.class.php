@@ -26,6 +26,11 @@ class Model_Activity extends Model_Database{
                                       WHERE author = \"$autor_name\"");
         $return_data = $stm->fetchAll();
 
+        foreach ($return_data as $article) {
+            $article["text"] = htmlspecialchars_decode($article["text"]);
+            print_r($article['text']);
+        }
+
         for ($i = 0; $i < count($return_data); ++$i){
             $idhodnoceni = $return_data[$i]["idhodnoceni"];
             if ($idhodnoceni != -1){
@@ -46,5 +51,18 @@ class Model_Activity extends Model_Database{
 
     private function getReviewerData(){
         return $this->getPdo()->query("");
+    }
+
+    public function addNewArticle($autor_name, $title, $content)
+    {
+        $stm = $this->getPdo()->prepare("INSERT INTO ".TAB_ARTICLES."
+                                (author, title, text)
+                                VALUES (:author, :title, :text);");
+
+        $stm->bindParam(":author", $autor_name);
+        $stm->bindParam(":title", $title);
+        $stm->bindParam(":text", $content);
+
+        $stm->execute();
     }
 }

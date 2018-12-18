@@ -35,6 +35,9 @@ class Controller_Activity implements IController{
                         break;
                     }
             }
+
+            //Ověření odeslání formulářů.
+            $this->checkSubmits();
         }
 
         $page_template = $twig->loadTemplate($p_tpl_name);
@@ -46,5 +49,16 @@ class Controller_Activity implements IController{
     {
         require_once("application/models/model_activity.class.php");
         $this->db = new Model_Activity();
+    }
+
+    private function checkSubmits()
+    {
+        if (isset($_POST['name_submit_newArticle'])) {
+            $this->db->addNewArticle($_SESSION['user_data']['jmeno'],
+                $_POST['name_nA_titleTF'], $_POST['name_editor_newArticle']);
+            unset($_POST['name_submit_newArticle']);
+            header("Location: ?page=activity");
+            die();
+        }
     }
 }
