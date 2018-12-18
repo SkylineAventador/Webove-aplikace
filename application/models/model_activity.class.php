@@ -26,9 +26,10 @@ class Model_Activity extends Model_Database{
                                       WHERE author = \"$autor_name\"");
         $return_data = $stm->fetchAll();
 
+        //kontrola proti XCross Side Scripting utoku
         foreach ($return_data as $article) {
+            $article["title"] = htmlspecialchars_decode($article["title"]);
             $article["text"] = htmlspecialchars_decode($article["text"]);
-            print_r($article['text']);
         }
 
         for ($i = 0; $i < count($return_data); ++$i){

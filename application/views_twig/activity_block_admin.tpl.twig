@@ -1,0 +1,49 @@
+{% block %}
+    <div class="card-header">
+        <h2 class="text-dark text-center">Panel autora</h2>
+    </div>
+    {% if activity_data is not empty %}
+        <div class="card-body">
+            <h4 class="text-center">Dole se zobrazují články které musíte přířadit k recenzi.</h4>
+            {#todo продолжать работу на панелью администратора.#}
+            {% for data in activity_data %}
+                <div class="card shadow text-dark mb-5">
+                    <div class="card-header" style="background-color: #ccccff">
+                        Zveřejněno: <b>{{ data.date }}</b>
+                        <button type="button"
+                                class="btn btn-outline-danger float-right disabled"
+                                disabled="disabled">Smazat</button>
+                        <button type="button"
+                                class="btn btn-outline-secondary disabled float-right mr-3"
+                                disabled="disabled">Upravit</button>
+                    </div>
+                    <div class="card-body text-justify bg-light">
+                        <h4>{{ data.title }}</h4>
+                        <p>{{ data.text | raw }}</p>
+                    </div>
+                    <div class="card-footer" style="background-color: #ccccff">
+                        {% if data.idhodnoceni == -1 %}
+                            Hodnocení: <span style="color: red; font-weight: bold">Článek ještě nebyl recenzován</span>.
+                        {% else %}
+                            Hodnocení: <span style="color: green; font-weight: bold">Článek je recenzován</span>.
+                            <div>
+                                Datum hodnocení: {{ data.hodnoc_data.datum }}<br>
+                                Dosažená známka: {{ data.hodnoc_data.znamka }}<br>
+                                Jmeno recenzenta: <span style="color: green;font-weight: bold">
+                                    {{ data.hodnoc_data.rezenzent }}</span><br>
+                                Přidělená kategorie: {{ data.hodnoc_data.kategorie }}<br>
+                                Komentář k recenzi: {{ data.hodnoc_data.komentar }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="card-body bg-light text-center" id="newArticle_errHideDiv">
+            <h4>Chyba stahování Vaších článků</h4>
+            <p>Podle naších záznamů, nenahrával jste ještě žádný článek.
+                Vytvořte si nový pomocí zeleného tlačítka vpravo nahoře.</p>
+        </div>
+    {% endif %}
+{% endblock %}
