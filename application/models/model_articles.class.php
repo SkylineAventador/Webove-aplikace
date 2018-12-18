@@ -7,8 +7,17 @@ class Model_Articles extends Model_Database{
      *  @return array Obsah uvodu.
      */
     public function getAllArticles(){
-        $stm = $this->getPdo()->query("SELECT * FROM ".TAB_ARTICLES." WHERE idhodnoceni > 0");
-        return $stm->fetchAll();
+        $stm = $this->getPdo()->query("SELECT * FROM prispevky
+                                      WHERE idhodnoceni > 0");
+        $return_data = $stm->fetchAll();
+
+        for ($i = 0; $i < count($return_data); ++$i){
+            $idhodnoceni = $return_data[$i]["idhodnoceni"];
+                $stm = $this->getPdo()->query("SELECT * FROM hodnoceni
+                                      WHERE idhodnoceni = $idhodnoceni");
+                $return_data[$i]["hodnoc_data"] = $stm->fetch(2);
+        }
+        return $return_data;
     }
 
     public function getBestArticles(){

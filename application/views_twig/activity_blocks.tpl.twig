@@ -5,6 +5,7 @@
                     class="btn btn-lg btn-outline-success float-right">Nový článek</button>
         </h2>
     </div>
+    {% if activity_data is not empty %}
     <div class="card-body">
         <h4 class="text-center">Dole se zobrazují články které patří Vám.
             {#{{ NAZEVPROMENE.priradilAdmin }}.#}
@@ -38,4 +39,11 @@
             </div>
         {% endfor %}
     </div>
+    {% else %}
+        <div class="card-body bg-light text-center">
+            <h2>Chyba nahrávání Vaších článků</h2>
+            <p>Podle naších záznamů, nenahrával jste ještě žádný článek.
+               Vytvořte si nový pomocí zeleného tlačítka vpravo nahoře.</p>
+        </div>
+    {% endif %}
 {% endblock %}

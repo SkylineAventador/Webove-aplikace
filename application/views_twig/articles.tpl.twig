@@ -11,6 +11,14 @@
                     <h4>{{ id.title }}</h4>
                     {{ id.text }}
                 </div>
+                <div class="card-footer">
+                        {#Datum hodnocení: {{ id.hodnoc_data.datum }}<br>#}
+                        Dosažená známka: {{ id.hodnoc_data.znamka }}<br>
+                        Hodnotil: <span style="color: green;font-weight: bold">
+                                    {{ id.hodnoc_data.rezenzent }}</span><br>
+                        Kategorie: {{ id.hodnoc_data.kategorie }}<br>
+                        {#Komentář recenzenta: {{ id.hodnoc_data.komentar }}#}
+                </div>
             </div>
         {% endfor %}
 

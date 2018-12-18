@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="container_fluid" style="margin-bottom: 55px">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100 d-block">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100 d-block" id="navbar">
         <ul class="navbar-nav collapse navbar-collapse" id="navigBar">
             <li class="navbar-brand">
                 <a href="?page=main" class="text-white"
@@ -101,7 +101,7 @@
                                 <p>Role: {{ idpravaName | raw }}</p>
                                 <p>Datum přihlášení: {{ user_LogData }}</p>
                                 {% if user_db_info["idprava"] == 0 %}
-                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Příspěvky</a>
+                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Články</a>
                                 {% elseif user_db_info["idprava"] == 3 %}
                                     <a href="?page=activity" class="btn btn-outline-success d-block">Moje Recenze</a>
                                 {% elseif user_db_info["idprava"] == 2 %}

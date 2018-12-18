@@ -5,7 +5,8 @@
     </div>
     <div class="container shadow p-3 my-4 text-justify border">
         <h2 class="text-dark text-center">Aktuální články</h2>
-        <p class="text-dark text-center">Níže se zobrazují clánky jenom s nejvyšší známkou.</p>
+        <p class="text-dark text-center">Níže se zobrazují články jenom s
+            <span style="color: green;font-weight: bold">nejvyšší</span> známkou.</p>
         {#{{ block("articlesBlock", "articles.tpl.twig") }}#}
         {% if data is not empty %}
             {% for id in data %}

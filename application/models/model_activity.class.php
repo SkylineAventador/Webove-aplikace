@@ -38,7 +38,10 @@ class Model_Activity extends Model_Database{
     }
 
     private function getAdminData(){
-        return $this->getPdo()->query("");
+        $stm = $this->getPdo()->query("");
+        $return_data = $stm->fetchAll();
+
+        return $return_data;
     }
 
     private function getReviewerData(){
