@@ -2,7 +2,9 @@
     <div class="card-header">
         <h2 class="text-dark text-center">Panel autora
             <button type="button"
-                    class="btn btn-lg btn-outline-success float-right">Nový článek</button>
+                    class="btn btn-lg btn-outline-success float-right"
+                    onclick="document.getElementById('newArticle_div').style.display = 'block';
+                             document.getElementById('newArticle_errHideDiv').style.display='none'">Nový článek</button>
         </h2>
     </div>
     {% if activity_data is not empty %}
@@ -40,10 +42,36 @@
         {% endfor %}
     </div>
     {% else %}
-        <div class="card-body bg-light text-center">
-            <h2>Chyba nahrávání Vaších článků</h2>
+        <div class="card-body bg-light text-center" id="newArticle_errHideDiv">
+            <h4>Chyba stahování Vaších článků</h4>
             <p>Podle naších záznamů, nenahrával jste ještě žádný článek.
                Vytvořte si nový pomocí zeleného tlačítka vpravo nahoře.</p>
         </div>
     {% endif %}
+    {# newArticle_div id WITH CKEDITOR FOR CREATING A NEW ARTICLE#}
+    <div id="newArticle_div" class="container border shadow bg-light my-3" style="display: none">
+        <span onclick="document.getElementById('newArticle_div').style.display='none';
+                       document.getElementById('newArticle_errHideDiv').style.display='block'" class="close"
+              title="Zavřit okno">&times;</span>
+        <h3 class="text-center">Vytváření nového článku</h3>
+        <form id="newArticle_form" method="post" class="mb-3">
+            <div class="form-group">
+                <label for="id_nA_titleTF" class="font-weight-bold">Záhlaví článku:</label>
+                <input type="text" class="form-control" id="id_nA_titleTF"
+                       placeholder="Např: KIV/WEB změny v novém akademickém roce" name="name_nA_titleTF">
+            </div>
+
+            <div class="form-group">
+                <label for="id_editor_newArticle" class="font-weight-bold">Do editoru vložte obsah článku:</label>
+                <textarea name="name_editor_newArticle" id="id_editor_newArticle"></textarea>
+                <script>CKEDITOR.replace('id_editor_newArticle');</script>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-lg btn-success w-50"
+                        name="name_submit_newArticle">Odeslat k recenzi</button>
+                <a href="?page=activity" class="btn btn-lg btn-outline-danger float-right">Storno</a>
+            </div>
+        </form>
+    </div>
 {% endblock %}
