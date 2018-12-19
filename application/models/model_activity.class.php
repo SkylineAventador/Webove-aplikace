@@ -44,7 +44,8 @@ class Model_Activity extends Model_Database{
     }
 
     private function getAdminData(){
-        $stm = $this->getPdo()->query("");
+        $stm = $this->getPdo()->query("SELECT * FROM prispevky
+                                               WHERE idhodnoceni = -1");
         $return_data = $stm->fetchAll();
 
         return $return_data;
