@@ -1,4 +1,5 @@
 {% block autor_block %}
+    <script src="../../ckeditor/ckeditor.js"></script>
     <div class="card-header">
         <h2 class="text-dark text-center">Panel autora
             <button type="button"
@@ -52,7 +53,6 @@
         </div>
     {% endif %}
     {# newArticle_div id WITH CKEDITOR FOR CREATING A NEW ARTICLE#}
-    {#TODO doesnt work script not empty check#}
     <div id="newArticle_div" class="bg-light modal" style="display: none">
         <form id="newArticle_form" method="post" class="modal-body">
             <a href="?page=activity" class="close"
@@ -67,9 +67,10 @@
 
             <div class="form-group">
                 <label for="id_editor_newArticle" class="font-weight-bold">Do editoru vložte obsah článku:</label>
-                <textarea name="name_editor_newArticle" id="id_editor_newArticle"
-                          oninput="validNewArtForm()"></textarea>
-                <script>CKEDITOR.replace('id_editor_newArticle');</script>
+                <textarea name="name_editor_newArticle" id="id_editor_newArticle"></textarea>
+                <script>
+                    CKEDITOR.replace('id_editor_newArticle');
+                </script>
             </div>
 
             <div class="form-group text-center">

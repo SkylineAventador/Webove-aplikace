@@ -48,6 +48,10 @@ class Model_Activity extends Model_Database{
                                                WHERE idhodnoceni = -1");
         $return_data = $stm->fetchAll();
 
+        $stm = $this->getPdo()->query("SELECT jmeno
+                                     FROM uzivatele WHERE idprava = 3;");
+        $return_data["recenzents"] = $stm->fetchAll();
+
         return $return_data;
     }
 

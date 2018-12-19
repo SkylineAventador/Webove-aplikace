@@ -15,6 +15,9 @@ class Controller_Activity implements IController{
     public function getResult(Twig_Environment $twig, $p_tpl_name, $tplData)
     {
         if (isset($_SESSION["user_data"])) {
+            //Ověření odeslání formulářů.
+            $this->checkSubmits();
+
             switch ($_SESSION["user_data"]["idprava"]) {
                 //Autor
                 case 0:
@@ -35,9 +38,6 @@ class Controller_Activity implements IController{
                         break;
                     }
             }
-
-            //Ověření odeslání formulářů.
-            $this->checkSubmits();
         }
 
         $page_template = $twig->loadTemplate($p_tpl_name);

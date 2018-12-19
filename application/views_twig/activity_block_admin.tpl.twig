@@ -26,18 +26,27 @@
                             {% else %}
                                 {% set artID = data.id %}
                                 <div class="dropdown float-right">
+                                    {% if data.recenzent == "Žádný"%}
                                     <button class="btn btn-success dropdown-toggle"
                                             type="button"
                                             id="reviewer_selectBtn_{{ artID }}" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            {% if data.recenzent == "Žádný"%}
-                                                Zvolit recenzenta
-                                                {% else %}
-                                                Změnit recenzenta
-                                            {% endif %}
+                                            aria-haspopup="true" aria-expanded="false">Zvolit recenzenta
                                     </button>
+                                    {% else %}
+                                        <button class="btn btn-warning dropdown-toggle"
+                                                type="button"
+                                                id="reviewer_selectBtn_{{ artID }}" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">Změnit recenzenta
+                                        </button>
+                                    {% endif %}
                                     <div class="dropdown-menu" aria-labelledby="reviewer_selectBtn_{{ artID }}">
-                                        <a class="dropdown-item" href="?page=activity">Action</a>
+                                            {% for reviewer in activity_data.recenzents %}
+                                            <button type="button" class="dropdown-item"
+                                                    id="changeReviewerBtn_{{ artID }}"
+                                                    onclick="changeReviewer(this.id)">
+                                                {{ reviewer.jmeno }}
+                                            </button>
+                                            {% endfor %}
                                     </div>
                                 </div>
                         {% endif %}
