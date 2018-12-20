@@ -6,22 +6,19 @@
     <!-- Proper bootstrap elements scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/mainOwnStyles.css">
-    <link rel="stylesheet" href="../../css/lfModalStyle.css">
+    {#<link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/other_service.css">
+    <link rel="stylesheet" href="../../css/login_form.css">
 
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../../js/reg_validate.js"></script>
+    <link rel="shortcut icon" href="../../images/logo_icon.ico" type="image/x-icon">
 </head>
 <body>
-
 <div class="container_fluid" style="margin-bottom: 55px">
-    <div id="navbar"
-         class="navbar navbar-dark navbar-expand bg-dark fixed-top w-100 d-block">
-        <ul class="navbar-nav">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100 d-block" id="navbar">
+        <ul class="navbar-nav collapse navbar-collapse" id="navigBar">
             <li class="navbar-brand">
-                <a href="index2.php?page=main" class="text-white"
+                <a href="?page=main" class="text-white"
                    style="text-decoration: none">Konference</a>
             </li>
             <li class="nav-item mr-2">
@@ -51,17 +48,16 @@
                         <input id="lfModal" type="password" placeholder="Enter Password" name="lfModal_psw"
                                required>
 
-                        <button id="lfModal" name="sbmt_lg_btn" type="submit" class="btn btn-success w-100">Pokračovat</button>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Pamatovat si mě
-                        </label>
-                    </div>
-
-                    <div id="lfModal" class="container">
-                        <button id="lfModal" type="button"
-                                onclick="document.getElementById('lfModal').style.display='none'"
-                                class="cancelbtn">Storno</button>
-                        <span id="lfModal" class="psw">Zapoměl(a) jste <a href="#">heslo</a>?</span>
+                        {#<div id="lfModal" class="container-fluid">#}
+                            <button id="lfModal" name="sbmt_lg_btn" type="submit" class="btn btn-success w-50">Pokračovat</button>
+                            <button id="lfModal" type="button"
+                                    onclick="document.getElementById('lfModal').style.display='none'"
+                                    class="cancelbtn w-25 float-right">Storno</button>
+                            {#<span id="lfModal" class="psw">Zapoměl(a) jste <a href="#">heslo</a>?</span>#}
+                        {#</div>#}
+                        {#<label>#}
+                            {#<input type="checkbox" checked="checked" name="remember"> Pamatovat si mě#}
+                        {#</label>#}
                     </div>
                     </form>
                 </div>
@@ -85,7 +81,7 @@
                     </li>
 
                     <li id="uTopInfoCard"
-                        class="container bg-success text-white rounded mr-2 pt-1 w-auto">
+                        class="container bg-success text-white rounded mr-2 py-2 w-auto">
                         {{ user_db_info.jmeno }}
                         <div id="uTopInfoCard-dropdown" class="rounded text-dark p-2"
                              style="right: 1vw">
@@ -102,11 +98,11 @@
                                 <p>Role: {{ idpravaName | raw }}</p>
                                 <p>Datum přihlášení: {{ user_LogData }}</p>
                                 {% if user_db_info["idprava"] == 0 %}
-                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Prispěvky</a>
+                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Články</a>
                                 {% elseif user_db_info["idprava"] == 3 %}
-                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Moje Rezenze</a>
+                                    <a href="?page=activity" class="btn btn-outline-success d-block">Moje Recenze</a>
                                 {% elseif user_db_info["idprava"] == 2 %}
-                                    <a href="?page=activity" class="btn btn-outline-primary d-block">Správování</a>
+                                    <a href="?page=activity" class="btn btn-outline-danger d-block">Správování</a>
                                 {% endif %}
                         </div>
                     </li>
@@ -115,5 +111,11 @@
                     </li>
             {% endif %}
         </ul>
-    </div>
+        {#TODO Fix this to navbar collapse work correctly.#}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navigBar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
 </div>
+{#Udelat neco s tlacitkem nahoru, nefunguje css styl z neznamych duvodu. Docasne vypnuto#}
+{#<button onclick="scrollToTop()" id="scrollToTopBtn" title="Nahoru">Nahoru</button>#}

@@ -26,10 +26,10 @@ $login = new Controller_uLogin();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/mainOwnStyles.css">
-    <link rel="stylesheet" href="../../css/lfModalStyle.css"/>
+    <link rel="stylesheet" href="../../css/other_service.css">
+    <link rel="stylesheet" href="../../css/login_form.css"/>
 
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/Bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
 

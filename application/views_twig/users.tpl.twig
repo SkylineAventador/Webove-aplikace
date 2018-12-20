@@ -19,13 +19,20 @@
                 <h4 class="card-title text-center">{{ user.jmeno|e }}</h4>
                 <p class="card-text"><b>E-mail:</b> {{ user.email|e }}</p>
                 <p class="card-text"><b>Role:</b> {{ idpravaName|raw }}</p>
-                <a href="#" class="btn btn-primary" style="display: block">Zobrazit profil</a>
+                {% if user.idprava == 0 %}
+                    {% if user.organizace == "Neznámá" %}
+                        <p class="card-text"><b>Organizace:</b> <span style="color: red">{{ user.organizace|e }}</span> </p>
+                    {% else %}
+                        <p class="card-text"><b>Organizace:</b> {{ user.organizace|e }} </p>
+                    {% endif %}
+                {% endif %}
+                {#<a href="#" class="btn btn-primary" style="display: block">Zobrazit profil</a>#}
             </div>
         </div>
         {% endfor %}
 
         <div class="container text-center my-3">
-            <a href="../index2.php?page=main" class="btn btn-danger">Hlavni stranka</a>
+            <a href="?page=main" class="btn btn-danger">Hlavni stranka</a>
         </div>
     </div>
 </div>

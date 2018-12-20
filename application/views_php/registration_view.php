@@ -8,7 +8,7 @@
 $con_reg = new Controller_Registration();
 
 //if (isset($_POST['submitBtn'])){
-//    if (isset($_POST['action']) && $_POST['action'] == "../index2.php?page=registration"){
+//    if (isset($_POST['action']) && $_POST['action'] == "../index.php?page=registration"){
 //        $con_reg->submit_registration();
 //    } else {
 //        echo "<p class='text-white'>Chyba ulozeni uzivatele</p>";
@@ -16,7 +16,7 @@ $con_reg = new Controller_Registration();
 //}
 //if (isset($_POST['submitBtn'])) {
 //    $this->submit_registration();
-//    require_once "application/views/service/regComplete_view.php";
+//    require_once "application/views_php/service/regComplete_view.php";
 //}
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ $con_reg = new Controller_Registration();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/Bootstrap/bootstrap.min.css">
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/Bootstrap/bootstrap.min.js"></script>
     <script src="../../js/regFieldsValidate.js"></script>
 </head>
 <body class="bg-dark">

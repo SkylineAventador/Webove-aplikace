@@ -15,7 +15,10 @@ require_once("application/core/settings.inc.php");
 //All references at page controllers will use this variable declared at index.php.
 $tplData = array();
 
-require (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
+require_once('application/core/controllers_interface.php');
+require_once('application/models/model_database.class.php');
+
+require_once (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
 $con_usrLogin = new Controller_uLogin();
 
 // Testing if required page exists. If NO -> switching to default page.
@@ -27,16 +30,15 @@ if(isset($_GET["page"]) && array_key_exists($pageName, PAGES)){
 } else {
     if ($pageName == "logout") {
         $con_usrLogin->logout();
-        header("Location: /index2.php?page=main");
+        header("Location: /index.php?page=main");
         die();
     } else
-        header("Location: /index2.php?page=error_404");
+        header("Location: /index.php?page=error_404");
         die();
 }
 
 // Connecting a necessary controller.
-require(CONTROLLERS_DIRECTORY ."/". PAGES[$page]['file']);
-
+require_once(CONTROLLERS_DIRECTORY ."/". PAGES[$page]['file']);
 //Obtaining a controller class name.
 $tmp = PAGES[$page]["object"];
 //Creating a controller instance.
@@ -50,7 +52,7 @@ $p_tpl_name = "$page.tpl.twig";
 require_once "application/core/twig-master/lib/Twig/Autoloader.php";
 Twig_Autoloader::register();
 
-//Connecting the path to TWIG's templates folder.
+//Connecting the path to TWIG's views_twig folder.
 $loader = new Twig_Loader_Filesystem(TEMPLATES_DIRECTORY);
 $twig = new Twig_Environment($loader);
 
@@ -88,6 +90,3 @@ if ($con_usrLogin->getSes()->isSessionSet("user_data")){
 $footer_template = $twig->loadTemplate("footer.tpl.twig");
 echo $footer_template->render($tplData);
 
-//echo "<pre>";
-//print_r($_SESSION);
-//echo "</pre>";

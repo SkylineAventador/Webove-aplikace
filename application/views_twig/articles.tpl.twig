@@ -1,0 +1,38 @@
+<div class="container shadow p-3 my-4 text-justify border">
+    <h2 class="text-dark text-center">Všechny publikace</h2>
+    {% block articlesBlock %}
+    {% if data is not empty %}
+        {% for id in data %}
+            <div class="card mb-3 bg-light text-dark">
+                <div class="card-header">
+                    Zveřejněno: <b>{{ id.date }}</b>, uzivatelem <b>{{ id.author }}</b>.
+                </div>
+                <div class="card-body">
+                    <h4>{{ id.title }}</h4>
+                    {{ id.text }}
+                </div>
+                <div class="card-footer">
+                        {#Datum hodnocení: {{ id.hodnoc_data.datum }}<br>#}
+                        Dosažená známka: {{ id.hodnoc_data.znamka }}<br>
+                        Hodnotil: <span style="color: green;font-weight: bold">
+                                    {{ id.hodnoc_data.rezenzent }}</span><br>
+                        Kategorie: {{ id.hodnoc_data.kategorie }}<br>
+                        {#Komentář recenzenta: {{ id.hodnoc_data.komentar }}#}
+                </div>
+            </div>
+        {% endfor %}
+
+    {% else %}
+        <div class="card text-center text-dark">
+            <div class="card-body bg-light shadow border border-danger">
+                <h1>Chyba</h1>
+                <br>
+                <h2>Nebyly nalézeny žádné ohodnocené články.</h2>
+                <p>Zatím všechny články jsou na prohlížení u našich recenzentů.
+                    Jakmile alespoň jeden z nich bude ohodnocen, hned se objeví tady.<br>
+                Omlouváme se za možné vzniklé potíže.</p>
+            </div>
+        </div>
+    {% endif %}
+    {% endblock %}
+</div>

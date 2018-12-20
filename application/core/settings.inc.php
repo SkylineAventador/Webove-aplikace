@@ -23,7 +23,7 @@ define("TAB_ARTICLES", "prispevky"); //pro LOCALHOST
 const CONTROLLERS_DIRECTORY = "application/controllers";
 
 //adresar sablon TWIGU
-const TEMPLATES_DIRECTORY = "application/templates";
+const TEMPLATES_DIRECTORY = "application/views_twig";
 
 // defaultni webu
 const DEFAULT_PAGE = "main";
@@ -40,5 +40,9 @@ const PAGES = array(
         "object" => "Controller_Registration",
         "title" => "Registrace uživatele"),
     "error_404" => array("file" => "controller_error_404.class.php", "object" => "Controller_Error_404",
-        "title" => "Error 404 - Stránka není nalezená")
+        "title" => "Error 404 - Stránka není nalezená"),
+    "articles" => array("file" => "controller_articles.class.php", "object" => "Controller_Articles",
+        "title" => "Všechny publikace"),
+    "activity" => array("file" => "controller_activity.class.php", "object" => "Controller_Activity",
+        "title" => "Aktivita uživatele")
 );

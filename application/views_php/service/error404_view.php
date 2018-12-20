@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../../../css/Bootstrap/bootstrap.min.css">
-    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/Bootstrap/bootstrap.min.js"></script>
 </head>
 <body class="bg-dark">
 <div class="container_fluid">

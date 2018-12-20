@@ -1,0 +1,86 @@
+{% block autor_block %}
+    <script src="../../ckeditor/ckeditor.js"></script>
+    <div class="card-header">
+        <h2 class="text-dark text-center">Panel autora
+            <button type="button"
+                    class="btn btn-lg btn-outline-success float-right"
+                    onclick="document.getElementById('newArticle_div').style.display = 'block'">Nový článek</button>
+        </h2>
+    </div>
+    {% if activity_data is not empty %}
+    <div class="card-body">
+        <h4 class="text-center">Dole se zobrazují články které patří Vám.
+            {#{{ NAZEVPROMENE.priradilAdmin }}.#}
+        </h4>
+        {% for data in activity_data %}
+            <div class="card shadow text-dark mb-5">
+                <div class="card-header" style="background-color: #ccccff">
+                    Zveřejněno: <b>{{ data.date }}</b>
+                    <button type="button"
+                            class="btn btn-outline-danger float-right disabled"
+                            disabled="disabled">Smazat</button>
+                    <button type="button"
+                            class="btn btn-outline-secondary disabled float-right mr-3"
+                            disabled="disabled">Upravit</button>
+                </div>
+                <div class="card-body text-justify bg-light">
+                    <h4>{{ data.title }}</h4>
+                    <p>{{ data.text | raw }}</p>
+                </div>
+                <div class="card-footer" style="background-color: #ccccff">
+                    {% if data.idhodnoceni == -1 %}
+                        Hodnocení: <span style="color: red; font-weight: bold">Článek ještě nebyl recenzován</span>.
+                        {% else %}
+                            Hodnocení: <span style="color: green; font-weight: bold">Článek je recenzován</span>.
+                            <div>
+                                Datum hodnocení: {{ data.hodnoc_data.datum }}<br>
+                                Dosažená známka: {{ data.hodnoc_data.znamka }}<br>
+                                Jmeno recenzenta: <span style="color: green;font-weight: bold">
+                                    {{ data.hodnoc_data.rezenzent }}</span><br>
+                                Přidělená kategorie: {{ data.hodnoc_data.kategorie }}<br>
+                                Komentář k recenzi: {{ data.hodnoc_data.komentar }}
+                            </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <div class="card-body bg-light text-center" id="newArticle_errHideDiv">
+            <h4>Chyba stahování Vaších článků</h4>
+            <p>Podle naších záznamů, nenahrával jste ještě žádný článek.
+               Vytvořte si nový pomocí zeleného tlačítka vpravo nahoře.</p>
+        </div>
+    {% endif %}
+    {# newArticle_div id WITH CKEDITOR FOR CREATING A NEW ARTICLE#}
+    <div id="newArticle_div" class="bg-light modal" style="display: none">
+        <form id="newArticle_form" method="post" class="modal-body">
+            <a href="?page=activity" class="close"
+                  title="Zavřit okno">&times;</a>
+            <h3 class="text-center">Vytváření nového článku</h3>
+            <div class="form-group">
+                <label for="id_nA_titleTF" class="font-weight-bold">Záhlaví článku:</label>
+                <input type="text" class="form-control" id="id_nA_titleTF"
+                       placeholder="Např: KIV/WEB změny v novém akademickém roce" name="name_nA_titleTF"
+                       oninput="validNewArtForm()">
+            </div>
+
+            <div class="form-group">
+                <label for="id_editor_newArticle" class="font-weight-bold">Do editoru vložte obsah článku:</label>
+                <textarea name="name_editor_newArticle" id="id_editor_newArticle"></textarea>
+                <script>
+                    CKEDITOR.replace('id_editor_newArticle');
+                </script>
+            </div>
+
+            <div class="form-group text-center">
+                <output id="span_newArticle_notEmpty" class="form-text float-left">
+                    <b>Pozor:</b> Zadejte nejdřív data</output>
+                <button type="submit" class="btn btn-lg btn-success w-50"
+                        name="name_submit_newArticle"
+                        id="id_submit_newArticle" disabled="disabled">Odeslat k recenzi</button>
+                <a href="?page=activity" class="btn btn-lg btn-outline-danger float-right">Storno</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

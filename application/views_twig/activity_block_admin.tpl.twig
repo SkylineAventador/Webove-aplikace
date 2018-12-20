@@ -1,0 +1,74 @@
+{% block admin_block%}
+    <div class="card-header">
+        <h2 class="text-dark text-center">Panel správce</h2>
+        <div class="container text-center">
+            <button type="button" class="btn btn-outline-danger btn-lg mr-3">Nerecenzované</button>
+            <button type="button" class="btn btn-outline-success btn-lg">Recenzované</button>
+        </div>
+
+    </div>
+    {% if activity_data is not empty %}
+        <div class="card-body">
+            <h4 class="text-center">Dole se zobrazují články které musíte přířadit k recenzi.</h4>
+            {% for data in activity_data|slice(0, last-1) %}
+                <div class="card shadow text-dark mb-5">
+                    <div class="card-header" style="background-color:#ff8080">
+                        Nahráno: <b>{{ data.date }}</b>, uživatelem
+                                    <b style="color: #0000cc">{{ data.author }}</b>
+                        {#Nerecenzovane#}
+                        {% if data.idhodnoceni > 0 %}
+                        <button type="button"
+                                class="btn btn-danger float-right">Odmítnout</button>
+                        <button type="button"
+                                class="btn btn-success float-right mr-3">Přijmout</button>
+
+                        {#Recenzovane#}
+                            {% else %}
+                                {% set artID = data.id %}
+                                <div class="dropdown float-right">
+                                    {% if data.recenzent == "Žádný"%}
+                                    <button class="btn btn-success dropdown-toggle"
+                                            type="button"
+                                            id="reviewer_selectBtn_{{ artID }}" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">Zvolit recenzenta
+                                    </button>
+                                    {% else %}
+                                        <button class="btn btn-warning dropdown-toggle"
+                                                type="button"
+                                                id="reviewer_selectBtn_{{ artID }}" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">Změnit recenzenta
+                                        </button>
+                                    {% endif %}
+                                    <div class="dropdown-menu" aria-labelledby="reviewer_selectBtn_{{ artID }}">
+                                            {% set artID_chRevBtn = 1 %}
+                                            {% for reviewer in activity_data.recenzents %}
+                                            <button class="dropdown-item"
+                                                    type="button"
+                                                    id="changeReviewerBtn_{{ artID }}_{{ artID_chRevBtn }}"
+                                                    onclick="changeReviewer(this.id, {{ artID }})">{{ reviewer.jmeno }}
+                                            </button>
+                                            {% set artID_chRevBtn = artID_chRevBtn+1 %}
+                                            {% endfor %}
+                                    </div>
+                                </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-body text-justify bg-light">
+                        <h4>{{ data.title }}</h4>
+                        <p>{{ data.text | raw }}</p>
+                    </div>
+                    <div class="card-footer" style="background-color: #ff8080">
+                        {% if data.idhodnoceni == -1 %}
+                            Přiřazený recenzent: <b style="color: green">{{ data.recenzent }}</b>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="card-body bg-light text-center">
+            <h4>Chyba stahování článků</h4>
+            <p>Nebyl nalezen žadný článek bez recenze.</p>
+        </div>
+    {% endif %}
+{% endblock %}
