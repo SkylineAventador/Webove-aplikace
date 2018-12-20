@@ -58,7 +58,8 @@ class Model_Activity extends Model_Database{
     private function getReviewerData(){
         $reviewer_name = $_SESSION['user_data']['jmeno'];
         $stm = $this->getPdo()->query("SELECT * FROM prispevky
-                                               WHERE recenzent = \"$reviewer_name\" ");
+                                               WHERE recenzent = \"$reviewer_name\" 
+                                               AND idhodnoceni = -1");
         $return_data = $stm->fetchAll();
         return $return_data;
     }

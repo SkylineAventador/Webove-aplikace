@@ -1,4 +1,5 @@
 {% block reviewer_block%}
+    <script src="../../ckeditor/ckeditor.js"></script>
     <div class="card-header">
         <h2 class="text-dark text-center">Panel recenzenta
             <span style="background-color: red; font-weight: bold">
@@ -9,19 +10,54 @@
 
     {% if activity_data is not empty %}
         <div class="card-body">
-            <h4 class="text-center">Dole se zobrazují články pro které musíte napsát recenzi.</h4>
+            <h4 class="text-center">Dole se zobrazují články které musíte ohodnotit.</h4>
             {% for data in activity_data %}
                 <div class="card shadow text-dark mb-5">
                     <div class="card-header" style="background-color: #5ecd52">
                         Nahráno: <b>{{ data.date }}</b>, uživatelem
                         <b style="color: #0000cc">{{ data.author }}</b>
+                        <div class="dropdown dropleft float-right">
+                        <button type="button"
+                                id="addRev_Btn{{ data.id }}"
+                                class="btn btn-info dropdown-toggle"
+                                data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Ohodnotit</button>
+                            <div class="dropdown-menu px-3"
+                                 aria-labelledby="addRev_Btn{{ data.id }}">
+                                 <form id="form_addRev{{ data.id }}"
+                                       method="post"
+                                       style="width: 75vw">
+                                     <div class="form-group">
+                                        <label for="addRev_input{{ data.id }}">Zadejte známku</label>
+                                        <input class="form-control"
+                                                id="addRev_input{{ data.id }}"
+                                                placeholder="Tady muzete zadat znamku">
+                                     </div>
+
+                                     <div class="form-group">
+                                         <label for="addRev_editor{{ data.id }}">Zadejte komentar</label>
+                                         <textarea class="form-control"
+                                                   id="addRev_editor{{ data.id }}"></textarea>
+                                         <script>CKEDITOR.replace('addRev_editor{{ data.id }}');</script>
+                                     </div>
+                                     <div class="form-group text-center">
+                                         <output id="output_addRev_notEmpty{{ data.id }}" class="form-text float-left">
+                                             <b>Pozor:</b> Zadejte nejdřív data</output>
+                                         <button type="submit" class="btn btn-lg btn-success w-50"
+                                                 name="name_submit_addRev{{ data.id }}"
+                                                 id="id_submit_newArticle{{ data.id }}"
+                                                 disabled="disabled">Ohodnotit</button>
+                                         <a href="?page=activity" class="btn btn-lg btn-outline-danger float-right">Storno</a>
+                                     </div>
+                                 </form>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body text-justify bg-light">
                         <h4>{{ data.title }}</h4>
                         <p>{{ data.text | raw }}</p>
                     </div>
                     <div class="card-footer" style="background-color: #5ecd52">
-
                     </div>
                 </div>
             {% endfor %}
