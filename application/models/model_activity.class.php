@@ -56,7 +56,11 @@ class Model_Activity extends Model_Database{
     }
 
     private function getReviewerData(){
-        return $this->getPdo()->query("");
+        $reviewer_name = $_SESSION['user_data']['jmeno'];
+        $stm = $this->getPdo()->query("SELECT * FROM prispevky
+                                               WHERE recenzent = \"$reviewer_name\" ");
+        $return_data = $stm->fetchAll();
+        return $return_data;
     }
 
     public function addNewArticle($autor_name, $title, $content)

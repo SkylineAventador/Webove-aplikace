@@ -1,2 +1,35 @@
-{% block %}
+{% block reviewer_block%}
+    <div class="card-header">
+        <h2 class="text-dark text-center">Panel recenzenta
+            <span style="background-color: red; font-weight: bold">
+                VE VÝVOJI
+            </span>
+        </h2>
+    </div>
+
+    {% if activity_data is not empty %}
+        <div class="card-body">
+            <h4 class="text-center">Dole se zobrazují články pro které musíte napsát recenzi.</h4>
+            {% for data in activity_data %}
+                <div class="card shadow text-dark mb-5">
+                    <div class="card-header" style="background-color: #5ecd52">
+                        Nahráno: <b>{{ data.date }}</b>, uživatelem
+                        <b style="color: #0000cc">{{ data.author }}</b>
+                    </div>
+                    <div class="card-body text-justify bg-light">
+                        <h4>{{ data.title }}</h4>
+                        <p>{{ data.text | raw }}</p>
+                    </div>
+                    <div class="card-footer" style="background-color: #5ecd52">
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="card-body bg-light text-center">
+            <h4>Chyba stahování článků</h4>
+            <p>Nebyl nalezen žadný článek pro Vás.</p>
+        </div>
+    {% endif %}
 {% endblock %}

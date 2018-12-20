@@ -4,6 +4,8 @@
                 {{ block('autor_block','activity_block_author.tpl.twig') }}
                 {% elseif user_db_info.idprava == 2 %}
                     {{ block('admin_block','activity_block_admin.tpl.twig') }}
+                {% elseif user_db_info.idprava == 3 %}
+                    {{ block('reviewer_block','activity_block_reviewer.tpl.twig') }}
             {% endif %}
         </div>
 </div>
