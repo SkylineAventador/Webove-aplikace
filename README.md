@@ -1,2 +1,2 @@
 # KIV-WEB
-Vývoj semestrální prace jedného z mých předmětů.
+Vývoj semestrální prace jednoho z mých předmětů.
