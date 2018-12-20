@@ -1,2 +1,2 @@
-# VIK-BEW
-Vyvoj semetralni prace jednoho z mych predmetu
+# KIV-WEB
+Vývoj semestrální prace jedného z mých předmětů.
