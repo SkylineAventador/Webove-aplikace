@@ -10,7 +10,7 @@
     {% if activity_data is not empty %}
         <div class="card-body">
             <h4 class="text-center">Dole se zobrazují články které musíte přířadit k recenzi.</h4>
-            {% for data in activity_data %}
+            {% for data in activity_data|slice(0, last-1) %}
                 <div class="card shadow text-dark mb-5">
                     <div class="card-header" style="background-color:#ff8080">
                         Nahráno: <b>{{ data.date }}</b>, uživatelem
@@ -40,12 +40,14 @@
                                         </button>
                                     {% endif %}
                                     <div class="dropdown-menu" aria-labelledby="reviewer_selectBtn_{{ artID }}">
+                                            {% set artID_chRevBtn = 1 %}
                                             {% for reviewer in activity_data.recenzents %}
-                                            <button type="button" class="dropdown-item"
-                                                    id="changeReviewerBtn_{{ artID }}"
-                                                    onclick="changeReviewer(this.id)">
-                                                {{ reviewer.jmeno }}
+                                            <button class="dropdown-item"
+                                                    type="button"
+                                                    id="changeReviewerBtn_{{ artID }}_{{ artID_chRevBtn }}"
+                                                    onclick="changeReviewer(this.id, {{ artID }})">{{ reviewer.jmeno }}
                                             </button>
+                                            {% set artID_chRevBtn = artID_chRevBtn+1 %}
                                             {% endfor %}
                                     </div>
                                 </div>

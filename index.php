@@ -17,6 +17,7 @@ $tplData = array();
 
 require_once('application/core/controllers_interface.php');
 require_once('application/models/model_database.class.php');
+
 require_once (CONTROLLERS_DIRECTORY ."/Controller_uLogin.class.php");
 $con_usrLogin = new Controller_uLogin();
 
@@ -89,6 +90,3 @@ if ($con_usrLogin->getSes()->isSessionSet("user_data")){
 $footer_template = $twig->loadTemplate("footer.tpl.twig");
 echo $footer_template->render($tplData);
 
-//echo "<pre>";
-//print_r($_SESSION);
-//echo "</pre>";

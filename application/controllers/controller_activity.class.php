@@ -5,6 +5,7 @@
  * Date: 13.12.2018
  * Time: 16:33
  */
+
 class Controller_Activity implements IController{
     /**
      * @var Model_Activity
@@ -49,6 +50,7 @@ class Controller_Activity implements IController{
     {
         require_once("application/models/model_activity.class.php");
         $this->db = new Model_Activity();
+
     }
 
     private function checkSubmits()
